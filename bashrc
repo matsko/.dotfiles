@@ -1,2 +1,2 @@
-. ~/.bash/config
-. ~/.bash/aliases
+. ~/.bash/config.conf
+. ~/.bash/aliases.conf
