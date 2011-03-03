@@ -10,6 +10,10 @@ alias cc='cap deploy:cold'
 alias dd='cap deploy'
 alias vim='mvim -N'
 alias v='vim .'
+alias r='rails s'
+alias c='rails c'
+alias rr='rake routes'
+alias mm='rake db:migrate'
 alias downloads='cd ~/Downloads'
 alias documents='cd ~/Documents'
 alias projects='cd ~/Documents/Projects'
@@ -23,11 +27,22 @@ alias dc='cd -'
 alias ..='cd ..'
 alias ea='vim ~/.bash/aliases'
 alias syslog='tail -n 50 /var/log/system*'
+alias gc='git commit -am'
+alias agc='git add .; git commit -am'
 
 alias mysqlstart='sudo -b /opt/local/bin/mysqld_safe5'
 alias mysqlstop='/opt/local/bin/mysqladmin5 -u root -p shutdown'
 
 export PATH="/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:$PATH" 
+
+alias z='cd ..'
+
+function pp {
+  git add .
+  git commit -m $1
+  git push origin master
+}
+
 
 #prohpc
 alias prohpc='cd /www/pro-hpc.com'
