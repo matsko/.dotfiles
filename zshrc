@@ -35,8 +35,8 @@ plugins=(git)
 source $ZSH/oh-my-zsh.sh
 
 # Example aliases
-source '~/.bash/aliases.sh'
-source '~/.bash/wwwaliases.sh'
+source '/Users/matias/.zsh/aliases.sh'
+source '/Users/matias/.zsh/wwwaliases.sh'
 
 # Customize to your needs...
 export PATH=/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:usr/local/mysql/bin:/usr/local/sbin:/opt/local/bin:/opt/local/sbin:/Users/matias/.rvm/bin
