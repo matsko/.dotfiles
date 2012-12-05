@@ -16,7 +16,6 @@ alias tm='top -o vmstat'
 alias f='free -m'
 alias c='clear'
 alias dc='cd -'
-alias x='tar xzvf'
 alias trim="tr -s \" \" | sed 's/^[ ]//g'"
 alias total-files='ls -1 | wc -l | trim'
 alias su='sudo -i'
@@ -112,26 +111,7 @@ function mmdown {
   rake db:migrate:down VERSION=$1
 }
 
-function new_vhost {
-	NAME=$1
-	mkdir "/www/$NAME"
-	echo "<VirtualHost *:80>"
-	echo "	ServerName $NAME"
-	echo "	ServerAlias $NAME"
-	echo "	DocumentRoot /Users/matias/Sites/$NAME"
-	echo "	<Directory /Users/matias/Sites/$NAME>"
-	echo "		Options Indexes FollowSymLinks MultiViews"
-	echo "		AllowOverride All"
-	echo "		Order allow,deny"
-	echo "		allow from all"
-	echo "	</Directory>"
-	echo "</VirtualHost>"
-}
-
 alias lipsum='echo "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In malesuada risus eu magna posuere eu laoreet odio ornare. Proin malesuada gravida magna at lacinia. Donec metus erat, rutrum sit amet faucibus quis, mattis at sem. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aenean feugiat nibh in quam facilisis a rutrum risus malesuada. Fusce libero libero, scelerisque eget luctus a, blandit vel nisi. Proin elit nisi, adipiscing nec congue et, ornare vel enim. Nam orci dui, volutpat vitae fringilla vitae, scelerisque ut neque. Etiam libero orci, consequat ac porttitor a, feugiat nec orci. Nullam volutpat rhoncus dolor sed pellentesque. Etiam ornare, enim molestie semper imperdiet, urna ligula porta massa, in tempor diam quam ut velit. Ut sit amet nulla sem, pellentesque bibendum elit. Sed lectus libero, iaculis a vestibulum at, laoreet tempor orci. Praesent scelerisque urna et velit eleifend viverra." | pbcopy; echo "copied to clipboard";'
-
-# sites
-alias wake='make -f /www/wake/wake'
 
 # git stuff
 alias g='git pull origin master'
