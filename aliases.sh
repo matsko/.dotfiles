@@ -1,14 +1,9 @@
 # Root
 alias root='sudo -i'
-alias plugins='cd /www/yearofmoo.com-plugins'
 
 # aliases
-alias aliases='vim ~/.aliases.sh'
-alias wwwaliases='vim ~/.wwwaliases.sh'
+alias aliases='vim ~/.zsh/aliases.sh'
 alias reload='. ~/.zshrc'
-
-alias e='emacs .'
-alias emacs='open -a /Applications/Emacs.app'
 
 alias ddsstore='sudo find ./ -name ".DS_Store" -depth -exec rm {} \;'
 alias encode-file='iconv -f ISO-8859-1 -t UTF-8'
@@ -31,7 +26,7 @@ function trail {
 
 # computer operations
 alias flushdns='dscacheutil -flushcache'
-#alias eject='sudo drutil tray eject'
+alias eject='sudo drutil tray eject'
 alias reboot='sudo reboot'
 alias sleep='sudo shutdown -s now'
 alias shutoff='sudo shutdown -h now'
@@ -169,8 +164,7 @@ function init_parallels {
   sudo kextutil "/Library/Parallels/Parallels Service.app/Contents/Kexts/10.6/prl_vnic.kext"
 }
 
-alias jenkins='java -jar /usr/local/Cellar/jenkins/1.454/lib/jenkins.war'
 function tire_index { 
   RAILS_ENV=development bundle exec rake environment tire:import FORCE=true CLASS=$1
-  RAILS_ENV=test bundle exec rake environment tire:import FORCE=true CLASS=$1
+  #RAILS_ENV=test bundle exec rake environment tire:import FORCE=true CLASS=$1
 }
