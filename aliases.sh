@@ -35,13 +35,11 @@ alias arps='sudo arp-scan --interface=en0 --localnet'
 
 # file system
 alias o='open .'
-alias ~='cd ~'
 alias www='cd /www'
 alias backups='cd /www/backups'
 alias backuprc='cd ~/Backup; vim .'
 alias home='cd ~'
 alias sites='www'
-alias ssh-dir='cd ~/.ssh'
 alias applications='cd ~/Applications'
 alias documents='cd ~/Documents'
 alias downloads='cd ~/Downloads'
@@ -59,6 +57,7 @@ alias phpini='sudo vim /private/etc/php.ini'
 alias syslog='tail -n 50 /var/log/system.log'
 
 # httpd server
+alias ssh-dir='cd ~/.ssh'
 alias httpd-dir='cd /private/etc/apache2'
 alias error-log='tail /private/var/log/apache2/error_log'
 alias vhosts='sudo vim /private/etc/apache2/extra/httpd-vhosts.conf' 
@@ -75,47 +74,17 @@ alias vundle='mvim +BundleInstall +qall'
 alias guard='rvmsudo bundle exec guard'
 alias spork='rvmsudo bundle exec spork'
 alias rspec='RAILS_ENV=test bundle exec rake spec'
-alias jtest='bundle exec jasmine-headless-webkit --color'
 alias gem='rvmsudo gem'
-function rvmrc {
-  rvm gemset create $1
-  echo "rvm use 1.9.2@$1" > ./.rvmrc
-  cd ../
-  cd -
-  rvmsudo gem install bundler
-  rvmsudo gem install rails
-  rvmsudo bundle
-}
-function rspec_install {
-  gem install rspec
-  gem install rspec-rails
-  rails g rspec:install
-  mkdir spec/
-  mkdir spec/helpers
-  mkdir spec/support
-  mkdir spec/routing
-  mkdir spec/models
-  mkdir spec/controllers
-  mkdir spec/views
-}
-
 alias bndl='rvmsudo bundle update'
 alias cc='cap deploy'
-alias ccc='cap deploy:cold'
 alias mm='rake db:migrate'
 alias rr='rake db:rollback'
-function mmredo {
-  rake db:migrate:redo VERSION=$1
-}
-function mmdown {
-  rake db:migrate:down VERSION=$1
-}
 
 alias lipsum='echo "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In malesuada risus eu magna posuere eu laoreet odio ornare. Proin malesuada gravida magna at lacinia. Donec metus erat, rutrum sit amet faucibus quis, mattis at sem. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aenean feugiat nibh in quam facilisis a rutrum risus malesuada. Fusce libero libero, scelerisque eget luctus a, blandit vel nisi. Proin elit nisi, adipiscing nec congue et, ornare vel enim. Nam orci dui, volutpat vitae fringilla vitae, scelerisque ut neque. Etiam libero orci, consequat ac porttitor a, feugiat nec orci. Nullam volutpat rhoncus dolor sed pellentesque. Etiam ornare, enim molestie semper imperdiet, urna ligula porta massa, in tempor diam quam ut velit. Ut sit amet nulla sem, pellentesque bibendum elit. Sed lectus libero, iaculis a vestibulum at, laoreet tempor orci. Praesent scelerisque urna et velit eleifend viverra." | pbcopy; echo "copied to clipboard";'
 
 # git stuff
 alias g='git pull origin master'
-alias s='git status --short –ignore-submodules'
+alias gs='git status --short –ignore-submodules'
 alias gb='git checkout -b '
 alias gm='git merge '
 alias go='git checkout '
@@ -130,9 +99,8 @@ alias ga='git add'
 alias gam='git commit --amend'
 alias grh='git reset --hard HEAD'
 alias gsi='git submodule update --init --recursive'
-alias total-commits="git shortlog | grep -E '^[ ]+\w+' | wc -l | trim"
+alias gtc="git shortlog | grep -E '^[ ]+\w+' | wc -l | trim"
 alias gitabort='git rebase -i HEAD~10'
-alias master='git checkout master'
 alias gd='git diff'
 alias gspa='git submodule foreach git pull origin master'
 
