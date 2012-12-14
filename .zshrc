@@ -23,9 +23,7 @@ ZSH_THEME="wedisagree"
 # Uncomment following line if you want red dots to be displayed while waiting for completion
 # COMPLETION_WAITING_DOTS="true"
 
-PROMPT='%{$fg[magenta]%}[$(pwd)] %{$reset_color%}
-> ' # default prompt
-RPROMPT='${time} %{$fg[magenta]%}$(git_prompt_info)%{$reset_color%}$(git_prompt_status)%{$reset_color%}'
+#RPROMPT='${time} %{$fg[magenta]%}$(git_prompt_info)%{$reset_color%}$(git_prompt_status)%{$reset_color%}'
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
@@ -40,6 +38,9 @@ source '/Users/matias/.zsh/wwwaliases.sh'
 
 # Customize to your needs...
 export PATH=/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:usr/local/mysql/bin:/usr/local/sbin:/opt/local/bin:/opt/local/sbin:/Users/matias/.rvm/bin
+
+PROMPT='%{$fg[magenta]%}[$(pwd)] %{$reset_color%}
+> ' # default prompt
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function
 
