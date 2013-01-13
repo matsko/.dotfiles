@@ -1,6 +1,8 @@
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 
+rvmsudo_secure_path=1 
+
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
@@ -33,8 +35,8 @@ plugins=(git)
 source $ZSH/oh-my-zsh.sh
 
 # Example aliases
-source '/Users/matias/.zsh/aliases.sh'
-source '/Users/matias/.zsh/wwwaliases.sh'
+source '/Users/matias/.zsh/.aliases'
+source '/Users/matias/.zsh/.wwwaliases'
 
 # Customize to your needs...
 export PATH=/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:usr/local/mysql/bin:/usr/local/sbin:/opt/local/bin:/opt/local/sbin:/Users/matias/.rvm/bin
@@ -49,3 +51,5 @@ rvm use system
 if [ -f './.rvmrc' ]; then
   source ./.rvmrc
 fi
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting

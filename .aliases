@@ -2,7 +2,7 @@
 alias root='sudo -i'
 
 # aliases
-alias aliases='vim ~/.zsh/aliases.sh'
+alias aliases='vim ~/.zsh/.aliases'
 alias reload='. ~/.zshrc'
 
 alias ddsstore='sudo find ./ -name ".DS_Store" -depth -exec rm {} \;'
@@ -31,7 +31,7 @@ alias sleep='sudo shutdown -s now'
 alias shutoff='sudo shutdown -h now'
 alias printscreen='screencapture -iW'
 alias copy='pbcopy'
-alias arps='sudo arp-scan --interface=en0 --localnet'
+alias arps='sudo arp-scan --interface=en1 --localnet'
 
 # file system
 alias o='open .'
@@ -40,6 +40,7 @@ alias backups='cd /www/backups'
 alias backuprc='cd ~/Backup; vim .'
 alias home='cd ~'
 alias sites='www'
+alias code='cd ~/code'
 alias applications='cd ~/Applications'
 alias documents='cd ~/Documents'
 alias downloads='cd ~/Downloads'
@@ -94,7 +95,7 @@ function gacp {
   gac $1;
   git push origin master;
 }
-alias gl='git l'
+alias gl='git log'
 alias ga='git add'
 alias gam='git commit --amend'
 alias grh='git reset --hard HEAD'
@@ -104,15 +105,10 @@ alias gitabort='git rebase -i HEAD~10'
 alias gd='git diff'
 alias gspa='git submodule foreach git pull origin master'
 
-function init_parallels {
-  sudo kextutil "/Library/Parallels/Parallels Service.app/Contents/Kexts/10.6/prl_hypervisor.kext"
-  sudo kextutil "/Library/Parallels/Parallels Service.app/Contents/Kexts/10.6/prl_hid_hook.kext"
-  sudo kextutil "/Library/Parallels/Parallels Service.app/Contents/Kexts/10.6/prl_usb_connect.kext"
-  sudo kextutil "/Library/Parallels/Parallels Service.app/Contents/Kexts/10.6/prl_netbridge.kext"
-  sudo kextutil "/Library/Parallels/Parallels Service.app/Contents/Kexts/10.6/prl_vnic.kext"
-}
-
 function tire_index { 
   RAILS_ENV=development bundle exec rake environment tire:import FORCE=true CLASS=$1
   #RAILS_ENV=test bundle exec rake environment tire:import FORCE=true CLASS=$1
 }
+
+alias postgres.start='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
+alias postgres.stop='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
