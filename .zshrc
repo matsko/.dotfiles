@@ -52,4 +52,11 @@ if [ -f './.rvmrc' ]; then
   source ./.rvmrc
 fi
 
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+PGHOST=localhost
+PATH=/Applications/dart/dart-sdk/bin:$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
+
+export CHROME_CANARY_BIN="/Applications/dart/chromium/Chromium.app/Contents/MacOS/Chromium"
+export DART_FLAGS="--enable_type_checks --enable_asserts"

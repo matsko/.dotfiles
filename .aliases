@@ -64,7 +64,8 @@ alias error-log='tail /private/var/log/apache2/error_log'
 alias vhosts='sudo vim /private/etc/apache2/extra/httpd-vhosts.conf' 
 
 # vim stuff
-alias vim='mvim -N --remote-silent'
+alias s="open /Applications/Sublime\ Text\ 2.app"
+alias vim='mvim -N'
 alias tvim='/usr/bin/vim'
 alias v='vim .'
 alias vv='mvim .'
@@ -72,11 +73,9 @@ alias vimrc='vim ~/.vimrc'
 alias vundle='mvim +BundleInstall +qall'
 
 # rails Stuff
-alias guard='rvmsudo bundle exec guard'
-alias spork='rvmsudo bundle exec spork'
+alias guard='bundle exec guard'
+alias spork='bundle exec spork'
 alias rspec='RAILS_ENV=test bundle exec rake spec'
-alias gem='rvmsudo gem'
-alias bndl='rvmsudo bundle update'
 alias cc='cap deploy'
 alias mm='rake db:migrate'
 alias rr='rake db:rollback'
@@ -84,31 +83,23 @@ alias rr='rake db:rollback'
 alias lipsum='echo "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In malesuada risus eu magna posuere eu laoreet odio ornare. Proin malesuada gravida magna at lacinia. Donec metus erat, rutrum sit amet faucibus quis, mattis at sem. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aenean feugiat nibh in quam facilisis a rutrum risus malesuada. Fusce libero libero, scelerisque eget luctus a, blandit vel nisi. Proin elit nisi, adipiscing nec congue et, ornare vel enim. Nam orci dui, volutpat vitae fringilla vitae, scelerisque ut neque. Etiam libero orci, consequat ac porttitor a, feugiat nec orci. Nullam volutpat rhoncus dolor sed pellentesque. Etiam ornare, enim molestie semper imperdiet, urna ligula porta massa, in tempor diam quam ut velit. Ut sit amet nulla sem, pellentesque bibendum elit. Sed lectus libero, iaculis a vestibulum at, laoreet tempor orci. Praesent scelerisque urna et velit eleifend viverra." | pbcopy; echo "copied to clipboard";'
 
 # git stuff
-alias g='git pull origin master'
-alias gs='git status --short –ignore-submodules'
-alias gb='git checkout -b '
-alias gm='git merge '
-alias go='git checkout '
-alias gc='git commit -am '
+alias total-commits="git shortlog | grep -E '^[ ]+\w+' | wc -l | trim"
 alias gac='git add .; git commit -am '
 function gacp {
   gac $1;
   git push origin master;
 }
-alias gl='git log'
-alias ga='git add'
-alias gam='git commit --amend'
-alias grh='git reset --hard HEAD'
-alias gsi='git submodule update --init --recursive'
-alias gtc="git shortlog | grep -E '^[ ]+\w+' | wc -l | trim"
-alias gitabort='git rebase -i HEAD~10'
-alias gd='git diff'
-alias gspa='git submodule foreach git pull origin master'
 
-function tire_index { 
-  RAILS_ENV=development bundle exec rake environment tire:import FORCE=true CLASS=$1
-  #RAILS_ENV=test bundle exec rake environment tire:import FORCE=true CLASS=$1
-}
-
+alias pg='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log'
 alias postgres.start='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
 alias postgres.stop='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
+alias psql='/usr/local/bin/psql postgres'
+
+alias opendiff='/Applications/Xcode.app/Contents/Developer/usr/bin/opendiff'
+
+alias d='grunt docs:process'
+alias wip="git add .; git commit -am 'wip'"
+alias ipaddr='ifconfig | grep 192'
+
+alias ng-dart-server='/usr/local/bin/node node_modules/karma/bin/karma start karma.conf --reporters dots --port 8765 --browsers=ChromeCanary --report-slower-than=100'
+alias ng-dart-run='/usr/local/bin/node node_modules/karma/bin/karma run --port 8765'
