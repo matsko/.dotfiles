@@ -36,27 +36,23 @@ source $ZSH/oh-my-zsh.sh
 
 # Example aliases
 source '/Users/matias/.zsh/.aliases'
-source '/Users/matias/.zsh/.wwwaliases'
 
 # Customize to your needs...
-export PATH=/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:usr/local/mysql/bin:/usr/local/sbin:/opt/local/bin:/opt/local/sbin:/Users/matias/.rvm/bin
+export PATH=/Library/Internet\ Plug-Ins/JavaAppletPlugin.plugin/Contents/Home/bin:~/.rbenv/shims:$PATH:/usr/bin:/bin:/usr/sbin:/usr/local/bin:/usr/X11/bin:usr/:/usr/local/sbin:/opt/local/bin:/opt/local/sbin:/Applications/dart/dart-sdk/bin
 
 PROMPT='%{$fg[magenta]%}[$(pwd)] %{$reset_color%}
 > ' # default prompt
 
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function
-
-rvm use system
-
-if [ -f './.rvmrc' ]; then
-  source ./.rvmrc
-fi
-
 PGHOST=localhost
-PATH=/Applications/dart/dart-sdk/bin:$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 
 export CHROME_CANARY_BIN="/Applications/dart/chromium/Chromium.app/Contents/MacOS/Chromium"
 export DART_FLAGS="--enable_type_checks --enable_asserts"
+
+export NEW_RELIC_HOME="config"
+export NEW_RELIC_ENABLED=false
+
+export GOPATH=~/.goworkspace
+export PATH="$GOPATH/bin:$PATH"
