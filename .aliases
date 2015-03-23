@@ -2,11 +2,14 @@
 alias aliases='vim ~/.zsh/.aliases'
 alias reload='. ~/.zshrc'
 
+alias tmux-init='reattach-to-user-namespace -l'
+
 alias ddsstore='sudo find ./ -name ".DS_Store" -depth -exec rm {} \;'
 alias encode-file='iconv -f ISO-8859-1 -t UTF-8'
 alias usage='df -h'
 alias space='du -sh ./*'
 alias l='ls -lha'
+alias sl='ls'
 alias tu='top -o cpu'
 alias c='clear'
 alias trim="tr -s \" \" | sed 's/^[ ]//g'"
@@ -20,10 +23,9 @@ function trail {
 alias flushdns='dscacheutil -flushcache'
 alias eject='sudo drutil tray eject'
 alias reboot='sudo reboot'
-alias sleep='sudo shutdown -s now'
 alias shutoff='sudo shutdown -h now'
 alias printscreen='screencapture -iW'
-alias arps='sudo arp-scan --interface=en1 --localnet'
+alias arps='sudo arp-scan --interface=en0 --localnet'
 
 # file system
 alias o='open .'
@@ -40,7 +42,11 @@ alias music='cd ~/Music'
 alias movies='cd ~/Movies'
 alias desktop='cd ~/Desktop'
 alias public-key='cat ~/.ssh/id_rsa.pub | pbcopy; echo "public key copied to clipboard"'
-alias hosts='sudo vim /etc/hosts'
+alias hosts='sudo mvim /etc/hosts'
+function ckdir {
+  mkdir $1
+  cd $1
+}
 
 # local logs
 alias syslog='tail -n 50 /var/log/system.log'
@@ -52,16 +58,13 @@ alias error-log='tail /private/var/log/apache2/error_log'
 alias vhosts='sudo vim /private/etc/apache2/extra/httpd-vhosts.conf' 
 
 # vim stuff
-alias v='vim .'
-alias vim='mvim -N'
-alias tvim='/usr/bin/vim'
+alias v='tmux-init nvim .'
+alias mvim='tmux-init mvim -N'
+alias vim='tmux-init nvim'
+alias tvim='nvim'
 alias vimrc='vim ~/.vimrc'
+alias scripts='cd ~/.vim/scripts; vim .'
 alias vundle='mvim +BundleInstall +qall'
-
-# rails Stuff
-alias guard='bundle exec guard'
-alias spork='bundle exec spork'
-alias rspec='RAILS_ENV=test bundle exec rake spec'
 
 alias lipsum='echo "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In malesuada risus eu magna posuere eu laoreet odio ornare. Proin malesuada gravida magna at lacinia. Donec metus erat, rutrum sit amet faucibus quis, mattis at sem. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aenean feugiat nibh in quam facilisis a rutrum risus malesuada. Fusce libero libero, scelerisque eget luctus a, blandit vel nisi. Proin elit nisi, adipiscing nec congue et, ornare vel enim. Nam orci dui, volutpat vitae fringilla vitae, scelerisque ut neque. Etiam libero orci, consequat ac porttitor a, feugiat nec orci. Nullam volutpat rhoncus dolor sed pellentesque. Etiam ornare, enim molestie semper imperdiet, urna ligula porta massa, in tempor diam quam ut velit. Ut sit amet nulla sem, pellentesque bibendum elit. Sed lectus libero, iaculis a vestibulum at, laoreet tempor orci. Praesent scelerisque urna et velit eleifend viverra." | pbcopy; echo "copied to clipboard";'
 
@@ -74,40 +77,84 @@ alias psql='/usr/local/bin/psql postgres'
 alias opendiff='/Applications/Xcode.app/Contents/Developer/usr/bin/opendiff'
 
 alias wip="git add .; git commit -am 'wip'"
-alias ipaddr='ifconfig | grep 192'
+alias ipaddr='ipconfig getifaddr en0'
+alias whatismyip='curl --silent canihazip.com/s'
 
-alias ng-dart-server='/usr/local/bin/node node_modules/karma/bin/karma start karma.conf --reporters dots --port 8765 --browsers=ChromeCanary --report-slower-than=100'
+alias ng-dart-server='/usr/local/bin/node node_modules/karma/bin/karma start ./karma.conf --reporters dots --port 8765 --browsers=ChromeCanary --report-slower-than=100'
 alias ng-dart-run='/usr/local/bin/node node_modules/karma/bin/karma run --port 8765'
 
 function h {
   PORT=$1
   if [ -z $PORT ]; then
-    PORT=5000
+    PORT=5123
   fi 
   open "http://localhost:$PORT"
-  http-server -p $PORT
+  sleep 1
+  http-server -c-1 -p $PORT
 }
 alias hh='h 6666'
-alias ng='cd /www/angular.js'
-alias ngd='cd /www/angular.dart'
-alias gukp='gulp'
-
-function install-angular {
-  mkdir angular
-  cd angular
-  wget https://code.angularjs.org/snapshot/angular.js
-  wget https://code.angularjs.org/snapshot/angular-animate.js
-  wget https://code.angularjs.org/snapshot/angular-messages.js
-  wget https://code.angularjs.org/snapshot/angular-route.js
-  cd -
-}
-function install-jquery {
-  mkdir jquery
-  cd jquery
-  wget https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.js
-  cd -
-}
-
-alias yom='./yom'
 
 alias dns-cname='nslookup -d -type=cname'
+
+alias zshrc='vim ~/.zshrc'
+
+alias tmuxrc='vim ~/.tmux.conf'
+alias tmux='/usr/local/bin/tmux -f ~/.tmux.conf' 
+alias tmux-remove='tmux detach -s' 
+alias tmux-join='tmux attach -t' 
+alias tmux-create='tmux new -s' 
+
+alias ..='cd ..'
+alias ...='cd ...'
+alias ....='cd ....'
+alias .....='cd .....'
+
+function tmux_angularjs {
+  cd /www/angular.js
+  tmux has-session -t angularjs 2>/dev/null
+  if [ "$?" -eq 1 ] ; then
+    tmux new-session -d -s 'angularjs' -n 'vim'
+    tmux send-keys 'vim .' C-m
+    tmux new-window -n 'console' ''
+    tmux new-window -n 'autotest' ''
+    tmux send-keys -t 'autotest' 'grunt autotest' C-m
+    tmux new-window -n 'master' "watch --color -n 1 'clear; git --no-pager log -25 --pretty=oneline --abbrev-commit --decorate --reverse'"
+  fi
+  tmux attach -t 'angularjs'
+}
+
+function tmux_angulardart {
+  cd /www/angular.dart
+  tmux has-session -t angulardart 2>/dev/null
+  if [ "$?" -eq 1 ] ; then
+    tmux new-session -d -s 'angulardart'
+    tmux send-keys "vim ." C-m
+    tmux new-window -n 'console'
+    tmux new-window -n 'test-server'
+    tmux send-keys -t test-server ng-dart-server C-m
+    tmux new-window -n 'test-run'
+    tmux send-keys -t test-run 'ng-dart-run'
+    tmux new-window -n 'master' "watch --color -n 1 'clear; git --no-pager log -25 --pretty=oneline --abbrev-commit --decorate --reverse'"
+  fi
+  tmux attach -t 'angulardart'
+}
+
+function tmux_yearofmoo {
+  cd /www/new.yearofmoo.com/www
+  sh ./.tmux.sh
+}
+
+function tmux_erikalu {
+  cd /www/erika.lu
+  sh ./.tmux.sh
+}
+
+function tmux_idr {
+  cd /www/idr-redesign
+  sh ./.tmux.sh
+}
+
+function tmux_timecontrol {
+  cd /www/airpair/time-control
+  sh ./.tmux.sh
+}

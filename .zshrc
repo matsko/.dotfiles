@@ -1,8 +1,6 @@
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 
-rvmsudo_secure_path=1 
-
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
@@ -37,22 +35,44 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 source '/Users/matias/.zsh/.aliases'
 
-# Customize to your needs...
-export PATH=/Library/Internet\ Plug-Ins/JavaAppletPlugin.plugin/Contents/Home/bin:~/.rbenv/shims:$PATH:/usr/bin:/bin:/usr/sbin:/usr/local/bin:/usr/X11/bin:usr/:/usr/local/sbin:/opt/local/bin:/opt/local/sbin:/Applications/dart/dart-sdk/bin
+# Default Path
+export PATH=""
+export PATH="/usr/local/bin:/usr/local/sbin:/usr/local/git/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/local/bin:/opt/local/sbin:$PATH"
 
-PROMPT='%{$fg[magenta]%}[$(pwd)] %{$reset_color%}
+# Java
+export JAVA_HOME="/usr/local/java"
+export PATH="$JAVA_HOME/bin:$PATH"
+
+# Brew
+export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
+
+# Dart
+export PATH="/Applications/dart/dart-sdk/bin:$PATH"
+export CHROME_CANARY_BIN="/usr/local/Cellar/dartium/1.8.3/bin/dartium"
+export DART_FLAGS="--enable_type_checks --enable_asserts"
+
+# Go
+export GOPATH=~/.goworkspace
+export PATH="$GOPATH/bin:$PATH"
+
+# NodeJS
+export NODE_PATH="/Users/matias/.nvm/current/lib/node_modules"
+export PATH="/Users/matias/bin:/Users/matias/.nvm/current/bin:$PATH"
+
+# Ruby
+export PATH="$HOME/.rbenv/bin:$PATH"
+export RBENV_VERSION=2.1.2
+eval "$(rbenv init -)"
+
+# Vim
+export PATH="/usr/local/Cellar/vim/7.4.488/bin:$PATH"
+
+# Prompt
+PROMPT='%{$fg[yellow]%}[$(pwd)] %{$reset_color%}
 > ' # default prompt
-
-PGHOST=localhost
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 
-export CHROME_CANARY_BIN="/Applications/dart/chromium/Chromium.app/Contents/MacOS/Chromium"
-export DART_FLAGS="--enable_type_checks --enable_asserts"
-
-export NEW_RELIC_HOME="config"
-export NEW_RELIC_ENABLED=false
-
-export GOPATH=~/.goworkspace
-export PATH="$GOPATH/bin:$PATH"
+export NVM_DIR="/Users/matias/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
