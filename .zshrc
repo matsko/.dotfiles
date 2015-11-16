@@ -2,7 +2,7 @@
 ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
+# Look in $HOME/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 #ZSH_THEME="robbyrussell"
@@ -25,15 +25,15 @@ ZSH_THEME="wedisagree"
 
 #RPROMPT='${time} %{$fg[magenta]%}$(git_prompt_info)%{$reset_color%}$(git_prompt_status)%{$reset_color%}'
 
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Which plugins would you like to load? (plugins can be found in $HOME/.oh-my-zsh/plugins/*)
+# Custom plugins may be added to $HOME/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
 # Example aliases
-source '/Users/matias/.zsh/.aliases'
+source "$HOME/.zsh/.aliases"
 
 # Default Path
 export PATH=""
@@ -48,16 +48,17 @@ export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 
 # Dart
 export PATH="/Applications/dart/dart-sdk/bin:$PATH"
-export CHROME_CANARY_BIN="/usr/local/Cellar/dartium/1.8.3/bin/dartium"
+export DARTIUM_BIN="/usr/local/Cellar/dartium/1.11.1/bin/dartium"
+export CHROME_CANARY_BIN="/Applications/Google Chrome Canary.app/Contents/MacOS/Google Chrome Canary"
 export DART_FLAGS="--enable_type_checks --enable_asserts"
 
 # Go
-export GOPATH=~/.goworkspace
+export GOPATH=$HOME/.goworkspace
 export PATH="$GOPATH/bin:$PATH"
 
 # NodeJS
-export NODE_PATH="/Users/matias/.nvm/current/lib/node_modules"
-export PATH="/Users/matias/bin:/Users/matias/.nvm/current/bin:$PATH"
+export NODE_PATH="$HOME/.nvm/current/lib/node_modules"
+export PATH="$HOME/bin:$HOME/.nvm/current/bin:$PATH"
 
 # Ruby
 export PATH="$HOME/.rbenv/bin:$PATH"
@@ -74,5 +75,5 @@ PROMPT='%{$fg[yellow]%}[$(pwd)] %{$reset_color%}
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 
-export NVM_DIR="/Users/matias/.nvm"
+export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
