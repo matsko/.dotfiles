@@ -2,10 +2,14 @@
 alias aliases='vim ~/.zsh/.aliases'
 alias reload='. ~/.zshrc'
 
-alias tmux-init='reattach-to-user-namespace -l'
+#alias tmux-init='reattach-to-user-namespace -l'
+alias tmux-init=''
+
+alias gd='git diff'
+alias gdc='git diff --cached'
 
 alias ddsstore='sudo find ./ -name ".DS_Store" -depth -exec rm {} \;'
-alias encode-file='iconv -f ISO-8859-1 -t UTF-8'
+alias encode-file='iconv -f ISO-8859-1 -t UTF-8' 
 alias usage='df -h'
 alias space='du -sh ./*'
 alias l='ls -lha'
@@ -15,17 +19,14 @@ alias c='clear'
 alias trim="tr -s \" \" | sed 's/^[ ]//g'"
 alias total-files='ls -1 | wc -l | trim'
 alias su='sudo -i'
+
 function trail {
   echo "$(pwd)/$1"
 }
 
 # computer operations
-alias flushdns='dscacheutil -flushcache'
-alias eject='sudo drutil tray eject'
-alias reboot='sudo reboot'
-alias shutoff='sudo shutdown -h now'
-alias printscreen='screencapture -iW'
-alias arps='sudo arp-scan --interface=en0 --localnet'
+alias flushdns='dscacheutil -flushcache' alias eject='sudo drutil tray eject' alias reboot='sudo reboot' alias 
+shutoff='sudo shutdown -h now' alias printscreen='screencapture -iW' alias arps='sudo arp-scan --interface=en0 --localnet'
 
 # file system
 alias o='open .'
@@ -33,7 +34,8 @@ alias www='cd /www'
 alias home='cd ~'
 alias sites='www'
 alias code='cd ~/code'
-alias applications='cd ~/Applications'
+alias applications='cd 
+~/Applications'
 alias documents='cd ~/Documents'
 alias downloads='cd ~/Downloads'
 alias projects='cd ~/Documents/Projects' 
@@ -42,7 +44,7 @@ alias music='cd ~/Music'
 alias movies='cd ~/Movies'
 alias desktop='cd ~/Desktop'
 alias public-key='cat ~/.ssh/id_rsa.pub | pbcopy; echo "public key copied to clipboard"'
-alias hosts='sudo mvim /etc/hosts'
+alias hosts='sudo mvim /etc/hosts' 
 function ckdir {
   mkdir $1
   cd $1
@@ -52,10 +54,8 @@ function ckdir {
 alias syslog='tail -n 50 /var/log/system.log'
 
 # httpd server
-alias ssh-dir='cd ~/.ssh'
-alias httpd-dir='cd /private/etc/apache2'
-alias error-log='tail /private/var/log/apache2/error_log'
-alias vhosts='sudo vim /private/etc/apache2/extra/httpd-vhosts.conf' 
+alias ssh-dir='cd ~/.ssh' alias httpd-dir='cd /private/etc/apache2' alias error-log='tail 
+/private/var/log/apache2/error_log' alias vhosts='sudo vim /private/etc/apache2/extra/httpd-vhosts.conf'
 
 # vim stuff
 alias v='tmux-init nvim .'
@@ -64,30 +64,38 @@ alias vim='tmux-init nvim'
 alias tvim='nvim'
 alias vimrc='vim ~/.vimrc'
 alias scripts='cd ~/.vim/scripts; vim .'
-alias vundle='mvim +BundleInstall +qall'
+alias vundle='vim +BundleInstall +qall'
 
-alias lipsum='echo "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In malesuada risus eu magna posuere eu laoreet odio ornare. Proin malesuada gravida magna at lacinia. Donec metus erat, rutrum sit amet faucibus quis, mattis at sem. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aenean feugiat nibh in quam facilisis a rutrum risus malesuada. Fusce libero libero, scelerisque eget luctus a, blandit vel nisi. Proin elit nisi, adipiscing nec congue et, ornare vel enim. Nam orci dui, volutpat vitae fringilla vitae, scelerisque ut neque. Etiam libero orci, consequat ac porttitor a, feugiat nec orci. Nullam volutpat rhoncus dolor sed pellentesque. Etiam ornare, enim molestie semper imperdiet, urna ligula porta massa, in tempor diam quam ut velit. Ut sit amet nulla sem, pellentesque bibendum elit. Sed lectus libero, iaculis a vestibulum at, laoreet tempor orci. Praesent scelerisque urna et velit eleifend viverra." | pbcopy; echo "copied to clipboard";'
+alias lipsum='echo "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In malesuada risus eu magna posuere eu 
+laoreet odio ornare. Proin malesuada gravida magna at lacinia. Donec metus erat, rutrum sit amet faucibus quis, mattis at 
+sem. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aenean feugiat nibh in quam 
+facilisis a rutrum risus malesuada. Fusce libero libero, scelerisque eget luctus a, blandit vel nisi. Proin elit nisi, 
+adipiscing nec congue et, ornare vel enim. Nam orci dui, volutpat vitae fringilla vitae, scelerisque ut neque. Etiam 
+libero orci, consequat ac porttitor a, feugiat nec orci. Nullam volutpat rhoncus dolor sed pellentesque. Etiam ornare, 
+enim molestie semper imperdiet, urna ligula porta massa, in tempor diam quam ut velit. Ut sit amet nulla sem, pellentesque 
+bibendum elit. Sed lectus libero, iaculis a vestibulum at, laoreet tempor orci. Praesent scelerisque urna et velit 
+eleifend viverra." | pbcopy; echo "copied to clipboard";'
 
 # git stuff
 alias total-commits="git shortlog | grep -E '^[ ]+\w+' | wc -l | trim"
 
-alias pg='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log'
-alias psql='/usr/local/bin/psql postgres'
+alias pg='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log' alias psql='/usr/local/bin/psql 
+postgres'
 
 alias opendiff='/Applications/Xcode.app/Contents/Developer/usr/bin/opendiff'
 
-alias wip="git add .; git commit -am 'wip'"
-alias ipaddr='ipconfig getifaddr en0'
-alias whatismyip='curl --silent canihazip.com/s'
+alias wip="git add .; git commit -am 'wip'" alias ipaddr='ipconfig getifaddr en0' alias whatismyip='curl --silent 
+canihazip.com/s'
 
-alias ng-dart-server='/usr/local/bin/node node_modules/karma/bin/karma start ./karma.conf --reporters dots --port 8765 --browsers=ChromeCanary --report-slower-than=100'
-alias ng-dart-run='/usr/local/bin/node node_modules/karma/bin/karma run --port 8765'
+alias ng-dart-server='/usr/local/bin/node node_modules/karma/bin/karma start ./karma.conf --reporters dots --port 8765 
+--browsers=ChromeCanary --report-slower-than=100' alias ng-dart-run='/usr/local/bin/node node_modules/karma/bin/karma run 
+--port 8765'
 
 function h {
   PORT=$1
   if [ -z $PORT ]; then
     PORT=5123
-  fi 
+  fi
   open "http://localhost:$PORT"
   sleep 1
   http-server -c-1 -p $PORT
@@ -99,10 +107,10 @@ alias dns-cname='nslookup -d -type=cname'
 alias zshrc='vim ~/.zshrc'
 
 alias tmuxrc='vim ~/.tmux.conf'
-alias tmux='/usr/local/bin/tmux -f ~/.tmux.conf' 
-alias tmux-remove='tmux detach -s' 
-alias tmux-join='tmux attach -t' 
-alias tmux-create='tmux new -s' 
+alias tmux='/usr/local/bin/tmux -f ~/.tmux.conf'
+alias tmux-remove='tmux detach -s'
+alias tmux-join='tmux attach -t'
+alias tmux-create='tmux new -s'
 
 alias ..='cd ..'
 alias ...='cd ...'
@@ -118,7 +126,8 @@ function tmux_angularjs {
     tmux new-window -n 'console' ''
     tmux new-window -n 'autotest' ''
     tmux send-keys -t 'autotest' 'grunt autotest' C-m
-    tmux new-window -n 'master' "watch --color -n 1 'clear; git --no-pager log -25 --pretty=oneline --abbrev-commit --decorate --reverse'"
+    tmux new-window -n 'master' "watch --color -n 1 'clear; git --no-pager log -25 --pretty=oneline --abbrev-commit 
+--decorate --reverse'"
   fi
   tmux attach -t 'angularjs'
 }
@@ -134,7 +143,8 @@ function tmux_angulardart {
     tmux send-keys -t test-server ng-dart-server C-m
     tmux new-window -n 'test-run'
     tmux send-keys -t test-run 'ng-dart-run'
-    tmux new-window -n 'master' "watch --color -n 1 'clear; git --no-pager log -25 --pretty=oneline --abbrev-commit --decorate --reverse'"
+    tmux new-window -n 'master' "watch --color -n 1 'clear; git --no-pager log -25 --pretty=oneline --abbrev-commit 
+--decorate --reverse'"
   fi
   tmux attach -t 'angulardart'
 }
