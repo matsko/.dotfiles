@@ -14,6 +14,7 @@ alias usage='df -h'
 alias space='du -sh ./*'
 alias l='ls -lha'
 alias sl='ls'
+alias gti='git'
 alias tu='top -o cpu'
 alias c='clear'
 alias trim="tr -s \" \" | sed 's/^[ ]//g'"
@@ -30,7 +31,7 @@ shutoff='sudo shutdown -h now' alias printscreen='screencapture -iW' alias arps=
 
 # file system
 alias o='open .'
-alias www='cd /www'
+alias www='cd /Users/matsko/code'
 alias home='cd ~'
 alias sites='www'
 alias code='cd ~/code'
@@ -44,7 +45,7 @@ alias music='cd ~/Music'
 alias movies='cd ~/Movies'
 alias desktop='cd ~/Desktop'
 alias public-key='cat ~/.ssh/id_rsa.pub | pbcopy; echo "public key copied to clipboard"'
-alias hosts='sudo mvim /etc/hosts' 
+alias hosts='sudo vim /etc/hosts' 
 function ckdir {
   mkdir $1
   cd $1
@@ -65,6 +66,7 @@ alias tvim='nvim'
 alias vimrc='vim ~/.vimrc'
 alias scripts='cd ~/.vim/scripts; vim .'
 alias vundle='vim +BundleInstall +qall'
+alias gitrc='vim ~/.gitconfig'
 
 alias lipsum='echo "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In malesuada risus eu magna posuere eu 
 laoreet odio ornare. Proin malesuada gravida magna at lacinia. Donec metus erat, rutrum sit amet faucibus quis, mattis at 
@@ -84,8 +86,16 @@ postgres'
 
 alias opendiff='/Applications/Xcode.app/Contents/Developer/usr/bin/opendiff'
 
-alias wip="git add .; git commit -am 'wip'" alias ipaddr='ipconfig getifaddr en0' alias whatismyip='curl --silent 
-canihazip.com/s'
+function wip {
+  MSG=$1
+  if [ -z $MSG ]; then
+    MSG='wip'
+  fi
+  git add .
+  git commit -am $MSG
+}
+
+alias ipaddr='ipconfig getifaddr en0' alias whatismyip='curl --silent canihazip.com/s'
 
 alias ng-dart-server='/usr/local/bin/node node_modules/karma/bin/karma start ./karma.conf --reporters dots --port 8765 
 --browsers=ChromeCanary --report-slower-than=100' alias ng-dart-run='/usr/local/bin/node node_modules/karma/bin/karma run 
@@ -100,7 +110,7 @@ function h {
   sleep 1
   http-server -c-1 -p $PORT
 }
-alias hh='h 6666'
+alias hh='h 6969'
 
 alias dns-cname='nslookup -d -type=cname'
 
@@ -113,9 +123,9 @@ alias tmux-join='tmux attach -t'
 alias tmux-create='tmux new -s'
 
 alias ..='cd ..'
-alias ...='cd ...'
-alias ....='cd ....'
-alias .....='cd .....'
+alias ...='..; ..;'
+alias ....='...; ..;'
+alias .....='...; ...;'
 
 function tmux_angularjs {
   cd /www/angular.js
@@ -168,3 +178,5 @@ function tmux_timecontrol {
   cd /www/airpair/time-control
   sh ./.tmux.sh
 }
+
+alias chown_usr_local='sudo chown -R $(whoami):admin /usr/local'
