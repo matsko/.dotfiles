@@ -5,6 +5,8 @@ alias reload='. ~/.zshrc'
 #alias tmux-init='reattach-to-user-namespace -l'
 alias tmux-init=''
 
+# git stuff
+alias gitrc='vim ~/.gitconfig';
 alias gd='git diff'
 alias gdc='git diff --cached'
 
@@ -180,3 +182,15 @@ function tmux_timecontrol {
 }
 
 alias chown_usr_local='sudo chown -R $(whoami):admin /usr/local'
+
+alias angular='cd ~/home/code/angular'
+
+function local_npm_ng {
+  rm -fr ./node_modules/@angular
+  npm install ../angular/dist/packages-dist/{animations,core,common,router,compiler,compiler-cli,forms,http,platform-browser,platform-browser-dynamic}
+  npm install ../angular/dist/tools/@angular/tsc-wrapped
+}
+
+alias kbb='kill -9 $(ps aux | grep ibazel\\\|devserver | cut -c 17-23)'
+alias abb='ibazel run packages/core/test/bundling/animation_world:devserver'
+alias a='cd ~/code/angular';

@@ -40,8 +40,8 @@ export PATH=""
 export PATH="/usr/local/bin:/usr/local/sbin:/usr/local/git/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/local/bin:/opt/local/sbin:$PATH"
 
 # Java
-export JAVA_HOME="/usr/local/java"
-export PATH="$JAVA_HOME/bin:$PATH"
+#export JAVA_HOME="/usr/local/java"
+#export PATH="$JAVA_HOME/bin:$PATH"
 
 # Brew
 export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
