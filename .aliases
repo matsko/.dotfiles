@@ -91,7 +91,17 @@ alias opendiff='/Applications/Xcode.app/Contents/Developer/usr/bin/opendiff'
 function wip {
   MSG=$1
   if [ -z $MSG ]; then
-    MSG='wip'
+    MSG='feat(core): wip'
+  fi
+  git add .
+  git commit -am $MSG
+}
+
+function woo {
+  MSG='feat(ivy): wip'
+  SUFFIX=$1
+  if [ $SUFFIX ]; then
+    MSG="${MSG}: ${SUFFIX}"
   fi
   git add .
   git commit -am $MSG
@@ -193,4 +203,27 @@ function local_npm_ng {
 
 alias kbb='kill -9 $(ps aux | grep ibazel\\\|devserver | cut -c 17-23)'
 alias abb='ibazel run packages/core/test/bundling/animation_world:devserver'
+
 alias a='cd ~/code/angular';
+alias atco='bazel run packages/core/test';
+alias datco='bazel run packages/core/test';
+alias atc='bazel run packages/core/test/render3';
+alias atcm='bazel run packages/compiler/test/render3:test';
+alias datc='bazel test packages/core/test/render3 --config=debug';
+alias datcm='bazel test packages/compiler/test/render3:test --condig=debug';
+alias atngtsc='bazel run packages/compiler-cli/test/compliance';
+alias datngtsc='bazel test packages/compiler-cli/test/compliance --config=debug';
+
+function agolden {
+  bazel run --define=compile=aot //packages/core/test/bundling/animation_world:symbol_test.accept
+  bazel run --define=compile=aot //packages/core/test/bundling/todo:symbol_test.accept
+  bazel run --define=compile=aot //packages/core/test/bundling/hello_world:symbol_test.accept
+  bazel run --define=compile=aot //packages/core/test/bundling/todo_r2:symbol_test.accept
+  bazel run --define=compile=aot //packages/core/test/bundling/hello_world_r2:symbol_test.accept
+}
+alias s='ssh g3'
+
+alias gbd='git branch -D'
+alias cdesign='cd ~/code/ConsoleDesign';
+
+alias m='cd ~/code/momentum';
