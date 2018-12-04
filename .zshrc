@@ -60,11 +60,6 @@ export PATH="$GOPATH/bin:$PATH"
 export NODE_PATH="$HOME/.nvm/current/lib/node_modules"
 export PATH="$HOME/bin:$HOME/.nvm/current/bin:$PATH"
 
-# Ruby
-export PATH="$HOME/.rbenv/bin:$PATH"
-export RBENV_VERSION=2.1.2
-eval "$(rbenv init -)"
-
 # Vim
 export PATH="/usr/local/Cellar/vim/7.4.488/bin:$PATH"
 
