@@ -211,19 +211,19 @@ alias adt='bazel shutdown; bazel run --define=compile=aot //packages/core/test/b
 alias atco='bazel run packages/core/test';
 alias datco='bazel run packages/core/test';
 alias atc='bazel run packages/core/test/render3';
+alias at='bazel run packages/core/test:test --define=compile=aot';
 alias atcw='bazel run packages/core/test/render3:render3_web';
 alias atcwd='bazel test packages/core/test/render3:render3_web --config=debug';
 alias ata='bazel run packages/core/test/animations_next';
-alias atcm='bazel run packages/compiler/test/render3:test';
+alias atcomp='bazel run packages/compiler/test/render3:test';
 alias datc='bazel test packages/core/test/render3 --config=debug';
-alias datcm='bazel test packages/compiler/test/render3:test --condig=debug';
-alias atngtsc='bazel run packages/compiler-cli/test/compliance';
-alias datngtsc='bazel test packages/compiler-cli/test/compliance --config=debug';
+alias datcomp='bazel test packages/compiler/test/render3:test --condig=debug';
+alias atcm='bazel run packages/compiler-cli/test/compliance';
+alias datcm='bazel test packages/compiler-cli/test/compliance --config=debug';
 alias atngtsci='bazel run packages/compiler-cli/test/ngtsc';
 alias datngtsci='bazel test packages/compiler-cli/test/ngtsc --config=debug';
 
 function agolden {
-  bazel run --define=compile=aot //packages/core/test/bundling/animation_world:symbol_test.accept
   bazel run --define=compile=aot //packages/core/test/bundling/todo:symbol_test.accept
   bazel run --define=compile=aot //packages/core/test/bundling/hello_world:symbol_test.accept
   bazel run --define=compile=aot //packages/core/test/bundling/todo_r2:symbol_test.accept
