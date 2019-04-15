@@ -36,7 +36,6 @@ alias o='open .'
 alias www='cd /Users/matsko/code'
 alias home='cd ~'
 alias sites='www'
-alias code='cd ~/code'
 alias applications='cd 
 ~/Applications'
 alias documents='cd ~/Documents'
@@ -211,6 +210,8 @@ alias adt='bazel shutdown; bazel run --define=compile=aot //packages/core/test/b
 alias atco='bazel run packages/core/test';
 alias datco='bazel run packages/core/test';
 alias atc='bazel run packages/core/test/render3';
+alias atca='bazel run packages/core/test/acceptance';
+alias datca='bazel test packages/core/test/acceptance --config=debug';
 alias at='bazel run packages/core/test:test --define=compile=aot';
 alias atcw='bazel run packages/core/test/render3:render3_web';
 alias atcwd='bazel test packages/core/test/render3:render3_web --config=debug';
@@ -226,8 +227,7 @@ alias datngtsci='bazel test packages/compiler-cli/test/ngtsc --config=debug';
 function agolden {
   bazel run --define=compile=aot //packages/core/test/bundling/todo:symbol_test.accept
   bazel run --define=compile=aot //packages/core/test/bundling/hello_world:symbol_test.accept
-  bazel run --define=compile=aot //packages/core/test/bundling/todo_r2:symbol_test.accept
-  bazel run --define=compile=aot //packages/core/test/bundling/hello_world_r2:symbol_test.accept
+  bazel run --define=compile=aot //packages/core/test/bundling/cyclic_import:symbol_test.accept
 }
 alias s='ssh g3'
 
