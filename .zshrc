@@ -36,32 +36,12 @@ source $ZSH/oh-my-zsh.sh
 source "$HOME/.zsh/.aliases"
 
 # Default Path
-export PATH=""
-export PATH="/usr/local/bin:/usr/local/sbin:/usr/local/git/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/local/bin:/opt/local/sbin:$PATH"
-
-# Java
-#export JAVA_HOME="/usr/local/java"
-#export PATH="$JAVA_HOME/bin:$PATH"
-
-# Brew
-export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
-
-# Dart
-export PATH="/Applications/dart/dart-sdk/bin:$PATH"
-export DARTIUM_BIN="/usr/local/Cellar/dartium/1.11.1/bin/dartium"
-export CHROME_CANARY_BIN="/Applications/Google Chrome Canary.app/Contents/MacOS/Google Chrome Canary"
-export DART_FLAGS="--enable_type_checks --enable_asserts"
-
-# Go
-export GOPATH=$HOME/.goworkspace
-export PATH="$GOPATH/bin:$PATH"
+export PATH="/Users/matsko/homebrew/bin:/usr/local/bin:/usr/local/sbin"
+export PATH="$PATH:/usr/bin:/bin:/usr/sbin:/sbin"
 
 # NodeJS
 export NODE_PATH="$HOME/.nvm/current/lib/node_modules"
 export PATH="$HOME/bin:$HOME/.nvm/current/bin:$PATH"
-
-# Vim
-export PATH="/usr/local/Cellar/vim/7.4.488/bin:$PATH"
 
 # Prompt
 PROMPT='%{$fg[yellow]%}[$(pwd)] %{$reset_color%}
@@ -69,10 +49,8 @@ PROMPT='%{$fg[yellow]%}[$(pwd)] %{$reset_color%}
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm

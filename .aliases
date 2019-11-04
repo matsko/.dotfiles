@@ -27,10 +27,6 @@ function trail {
   echo "$(pwd)/$1"
 }
 
-# computer operations
-alias flushdns='dscacheutil -flushcache' alias eject='sudo drutil tray eject' alias reboot='sudo reboot' alias 
-shutoff='sudo shutdown -h now' alias printscreen='screencapture -iW' alias arps='sudo arp-scan --interface=en0 --localnet'
-
 # file system
 alias o='open .'
 alias www='cd /Users/matsko/code'
@@ -47,17 +43,6 @@ alias movies='cd ~/Movies'
 alias desktop='cd ~/Desktop'
 alias public-key='cat ~/.ssh/id_rsa.pub | pbcopy; echo "public key copied to clipboard"'
 alias hosts='sudo vim /etc/hosts' 
-function ckdir {
-  mkdir $1
-  cd $1
-}
-
-# local logs
-alias syslog='tail -n 50 /var/log/system.log'
-
-# httpd server
-alias ssh-dir='cd ~/.ssh' alias httpd-dir='cd /private/etc/apache2' alias error-log='tail 
-/private/var/log/apache2/error_log' alias vhosts='sudo vim /private/etc/apache2/extra/httpd-vhosts.conf'
 
 # vim stuff
 alias v='tmux-init nvim .'
@@ -79,14 +64,6 @@ enim molestie semper imperdiet, urna ligula porta massa, in tempor diam quam ut 
 bibendum elit. Sed lectus libero, iaculis a vestibulum at, laoreet tempor orci. Praesent scelerisque urna et velit 
 eleifend viverra." | pbcopy; echo "copied to clipboard";'
 
-# git stuff
-alias total-commits="git shortlog | grep -E '^[ ]+\w+' | wc -l | trim"
-
-alias pg='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log' alias psql='/usr/local/bin/psql 
-postgres'
-
-alias opendiff='/Applications/Xcode.app/Contents/Developer/usr/bin/opendiff'
-
 function wip {
   MSG=$1
   if [ -z $MSG ]; then
@@ -96,21 +73,7 @@ function wip {
   git commit -am $MSG
 }
 
-function woo {
-  MSG='feat(ivy): wip'
-  SUFFIX=$1
-  if [ $SUFFIX ]; then
-    MSG="${MSG}: ${SUFFIX}"
-  fi
-  git add .
-  git commit -am $MSG
-}
-
 alias ipaddr='ipconfig getifaddr en0' alias whatismyip='curl --silent canihazip.com/s'
-
-alias ng-dart-server='/usr/local/bin/node node_modules/karma/bin/karma start ./karma.conf --reporters dots --port 8765 
---browsers=ChromeCanary --report-slower-than=100' alias ng-dart-run='/usr/local/bin/node node_modules/karma/bin/karma run 
---port 8765'
 
 function h {
   PORT=$1
@@ -122,116 +85,53 @@ function h {
   http-server -c-1 -p $PORT
 }
 alias hh='h 6969'
-
-alias dns-cname='nslookup -d -type=cname'
-
 alias zshrc='vim ~/.zshrc'
 
-alias tmuxrc='vim ~/.tmux.conf'
-alias tmux='/usr/local/bin/tmux -f ~/.tmux.conf'
-alias tmux-remove='tmux detach -s'
-alias tmux-join='tmux attach -t'
-alias tmux-create='tmux new -s'
-
 alias ..='cd ..'
-alias ...='..; ..;'
-alias ....='...; ..;'
-alias .....='...; ...;'
-
-function tmux_angularjs {
-  cd /www/angular.js
-  tmux has-session -t angularjs 2>/dev/null
-  if [ "$?" -eq 1 ] ; then
-    tmux new-session -d -s 'angularjs' -n 'vim'
-    tmux send-keys 'vim .' C-m
-    tmux new-window -n 'console' ''
-    tmux new-window -n 'autotest' ''
-    tmux send-keys -t 'autotest' 'grunt autotest' C-m
-    tmux new-window -n 'master' "watch --color -n 1 'clear; git --no-pager log -25 --pretty=oneline --abbrev-commit 
---decorate --reverse'"
-  fi
-  tmux attach -t 'angularjs'
-}
-
-function tmux_angulardart {
-  cd /www/angular.dart
-  tmux has-session -t angulardart 2>/dev/null
-  if [ "$?" -eq 1 ] ; then
-    tmux new-session -d -s 'angulardart'
-    tmux send-keys "vim ." C-m
-    tmux new-window -n 'console'
-    tmux new-window -n 'test-server'
-    tmux send-keys -t test-server ng-dart-server C-m
-    tmux new-window -n 'test-run'
-    tmux send-keys -t test-run 'ng-dart-run'
-    tmux new-window -n 'master' "watch --color -n 1 'clear; git --no-pager log -25 --pretty=oneline --abbrev-commit 
---decorate --reverse'"
-  fi
-  tmux attach -t 'angulardart'
-}
-
-function tmux_yearofmoo {
-  cd /www/new.yearofmoo.com/www
-  sh ./.tmux.sh
-}
-
-function tmux_erikalu {
-  cd /www/erika.lu
-  sh ./.tmux.sh
-}
-
-function tmux_idr {
-  cd /www/idr-redesign
-  sh ./.tmux.sh
-}
-
-function tmux_timecontrol {
-  cd /www/airpair/time-control
-  sh ./.tmux.sh
-}
-
-alias chown_usr_local='sudo chown -R $(whoami):admin /usr/local'
-
-alias angular='cd ~/home/code/angular'
-
-function local_npm_ng {
-  rm -fr ./node_modules/@angular
-  npm install ../angular/dist/packages-dist/{animations,core,common,router,compiler,compiler-cli,forms,http,platform-browser,platform-browser-dynamic}
-  npm install ../angular/dist/tools/@angular/tsc-wrapped
-}
-
-alias kbb='kill -9 $(ps aux | grep ibazel\\\|devserver | cut -c 17-23)'
-alias abb='ibazel run packages/core/test/bundling/animation_world:devserver'
+alias mfx='cd ~/code/mfx';
 
 alias a='cd ~/code/angular';
-alias adw='bazel shutdown; bazel run --define=compile=aot //packages/core/test/bundling/animation_world:devserver';
-alias adwb='bazel shutdown; bazel build --define=compile=aot //packages/core/test/bundling/animation_world:devserver';
-alias adt='bazel shutdown; bazel run --define=compile=aot //packages/core/test/bundling/todo:devserver';
-alias atco='bazel run packages/core/test';
-alias datco='bazel run packages/core/test';
-alias atc='bazel run packages/core/test/render3';
-alias atca='bazel run packages/core/test/acceptance';
-alias datca='bazel test packages/core/test/acceptance --config=debug';
-alias at='bazel run packages/core/test:test --define=compile=aot';
-alias atcw='bazel run packages/core/test/render3:render3_web';
-alias atcwd='bazel test packages/core/test/render3:render3_web --config=debug';
-alias ata='bazel run packages/core/test/animations_next';
-alias atcomp='bazel run packages/compiler/test/render3:test';
-alias datc='bazel test packages/core/test/render3 --config=debug';
-alias datcomp='bazel test packages/compiler/test/render3:test --condig=debug';
-alias atcm='bazel run packages/compiler-cli/test/compliance';
-alias datcm='bazel test packages/compiler-cli/test/compliance --config=debug';
-alias atngtsci='bazel run packages/compiler-cli/test/ngtsc';
-alias datngtsci='bazel test packages/compiler-cli/test/ngtsc --config=debug';
+alias adw='yarn bazel shutdown; bazel run --define=compile=aot //packages/core/test/bundling/animation_world:devserver';
+alias adwb='yarn bazel shutdown; bazel build --define=compile=aot //packages/core/test/bundling/animation_world:devserver';
+alias adt='yarn bazel shutdown; bazel run --define=compile=aot //packages/core/test/bundling/todo:devserver';
+alias atco='yarn bazel run packages/core/test';
+alias datco='yarn bazel run packages/core/test';
+alias atc='yarn bazel run packages/core/test/render3';
+alias atca='yarn bazel run packages/core/test/acceptance';
+alias datca='yarn bazel test packages/core/test/acceptance --config=debug';
+alias at='yarn bazel run packages/core/test:test --define=compile=aot';
+alias atcw='yarn bazel run packages/core/test/render3:render3_web';
+alias atcwd='yarn bazel test packages/core/test/render3:render3_web --config=debug';
+alias ata='yarn bazel run packages/core/test/animations_next';
+alias atcomp='yarn bazel run packages/compiler/test/render3:test';
+alias datc='yarn bazel test packages/core/test/render3 --config=debug';
+alias datcomp='yarn bazel test packages/compiler/test/render3:test --condig=debug';
+alias atcm='yarn bazel run packages/compiler-cli/test/compliance';
+alias datcm='yarn bazel test packages/compiler-cli/test/compliance --config=debug';
+alias atngtsci='yarn bazel run packages/compiler-cli/test/ngtsc';
+alias datngtsci='yarn bazel test packages/compiler-cli/test/ngtsc --config=debug';
 
 function agolden {
-  bazel run --define=compile=aot //packages/core/test/bundling/todo:symbol_test.accept
-  bazel run --define=compile=aot //packages/core/test/bundling/hello_world:symbol_test.accept
-  bazel run --define=compile=aot //packages/core/test/bundling/cyclic_import:symbol_test.accept
+  yarn bazel run --define=compile=aot //packages/core/test/bundling/todo:symbol_test.accept
+  yarn bazel run --define=compile=aot //packages/core/test/bundling/hello_world:symbol_test.accept
+  yarn bazel run --define=compile=aot //packages/core/test/bundling/cyclic_import:symbol_test.accept
+  yarn bazel run //tools/public_api_guard:ng_global_utils_api.accept
+  yarn bazel run //tools/public_api_guard:core_api.accept
 }
-alias s='ssh g3'
 
-alias gbd='git branch -D'
-alias cdesign='cd ~/code/ConsoleDesign';
+alias blaze=bazel
 
-alias m='cd ~/code/momentum';
+function generate_aio_es5 {
+  ./scripts/build-packages-dist.sh;
+  cd aio;
+  rm -fr node_modules;
+  rm -fr dist;
+  yarn aio-use-local;
+  rm -fr node_modules/.cache;
+  cp ~/common_js_terser_no_compress.js ./node_modules/@angular-devkit/build-angular/src/angular-cli-files/models/webpack-configs/common.js;
+  NG_BUILD_MANGLE=0 ng build --configuration=stable;
+  B=`git branch | grep \* | cut -d ' ' -f2`
+  F="es5_output_$B.js";
+  js-beautify ./dist/main-es5.*.js > $F;
+  echo "file saved as $F"
+}
