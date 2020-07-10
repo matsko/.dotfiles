@@ -1,4 +1,4 @@
-git clone ~/.dotfiles
+git clone git@github.com:matsko/.dotfiles.git
 cd ~
 ln -s ./.dotfiles/.aliases
 ln -s ./.dotfiles/.vimrc
