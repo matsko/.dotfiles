@@ -1,9 +1,17 @@
 alias www='cd ~/code';
 alias v='nvim .';
 alias vim='nvim';
+alias claer='clear';
 
 alias o='open';
+alias dotfiles='cd ~/.dotfiles';
 alias aliases='vim ~/.aliases';
+alias aliases.local='vim ~/.dotfiles/.aliases.local';
 alias zshrc='vim ~/.zshrc';
 alias vimrc='vim ~/.vimrc';
 alias sl=ls
+
+alias zshconfig="vim ~/.zshrc"
+alias ohmyzsh="vim ~/.oh-my-zsh"
+
+source ~/.dotfiles/.aliases.local
