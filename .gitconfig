@@ -1,0 +1,40 @@
+[user]
+	name = Matias Niemelä
+  # email = this is local to the machine
+  # username = this is local to the machine
+[core]
+	editor = nvim
+	whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
+	excludesfile = ~/.gitignore
+[web]
+	browser = google-chrome
+[color]
+	ui = auto
+[color "branch"]
+	current = yellow bold
+	local = green bold
+	remote = cyan bold
+[color "diff"]
+	meta = yellow bold
+	frag = magenta bold
+	old = red bold
+	new = green bold
+	whitespace = red reverse
+[color "status"]
+	added = green bold
+	changed = yellow bold
+	untracked = red bold
+[diff]
+	tool = vimdiff
+[difftool]
+	prompt = false
+[github]
+	user = matsko
+	token = token
+[gitflow "prefix"]
+	versiontag = v
+[sequence]
+	editor = interactive-rebase-tool
+[alias]
+  co = checkout
+  rb = rebase -i HEAD~20
