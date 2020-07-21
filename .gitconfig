@@ -1,3 +1,4 @@
+
 [user]
 	name = Matias Niemelä
   # email = this is local to the machine
@@ -38,3 +39,7 @@
 [alias]
   co = checkout
   rb = rebase -i HEAD~20
+
+# machine-specific
+[include]
+  path = ~/.gitconfig.local

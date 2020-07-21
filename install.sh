@@ -6,3 +6,4 @@ ln -s ./.dotfiles/.gitconfig
 mkdir -p .config/nvim
 cd .config/nvim
 ln -s ../../.dotfiles/.vimrc ./init.vim
+touch .gitconfig.local
