@@ -1,4 +1,3 @@
-
 [user]
 	name = Matias Niemelä
   # email = this is local to the machine
@@ -34,8 +33,6 @@
 	token = token
 [gitflow "prefix"]
 	versiontag = v
-[sequence]
-	editor = interactive-rebase-tool
 [alias]
   co = checkout
   amend = commit --amend
