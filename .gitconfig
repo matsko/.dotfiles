@@ -38,7 +38,9 @@
 	editor = interactive-rebase-tool
 [alias]
   co = checkout
-  rb = rebase -i HEAD~20
+  amend = commit --amend
+  confs = config -l
+  squash = rebase -i HEAD~20
 
 # machine-specific
 [include]
