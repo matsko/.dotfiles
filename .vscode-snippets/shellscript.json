@@ -1,0 +1,10 @@
+{
+  "cd into executed dir": {
+    "prefix": "cd-file",
+    "body": [
+      "# this will make sure the CWD is set to this file's directory",
+      "cd \"$(dirname \"\\$0\")\""
+    ],
+    "description": "Insert the CD command so that the shell script can be cd'd into the file's dir"
+  }
+}

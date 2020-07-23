@@ -8,19 +8,17 @@ alias claer='clear';
 alias sl=ls
 
 # Configuration Files
-alias aliases='vim ~/.aliases';
+alias aliases='vim ~/.dotfiles/.aliases';
 alias aliases.local='vim ~/.dotfiles/.aliases.local';
+alias gitconfig='vim ~/.dotfiles/.gitconfig';
+alias gitconfig.local='vim ~/.dotfiles/gitconfig.local';
+alias paths='vim ~/.dotfiles/.paths';
+alias paths.local='vim ~/.dotfiles/.paths.local';
 alias zshrc='vim ~/.zshrc';
-alias vimrc='vim ~/.vimrc';
-alias gitconfig='vim ~/.gitconfig';
-alias zshconfig="vim ~/.zshrc"
-alias ohmyzsh="vim ~/.oh-my-zsh"
+alias vimrc='vim ~/.dotfiles/.vimrc';
 alias sshconfig="vim ~/.ssh/config"
 alias tmuxconfig="vim ~/.tmux.conf"
 
 # Directories
 alias www='cd ~/code';
 alias dotfiles='cd ~/.dotfiles';
-
-# Machine-specific aliases
-source ~/.dotfiles/.aliases.local
