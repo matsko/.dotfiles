@@ -1,10 +1,12 @@
 if [[ ! -e ~/.dotfiles ]]; then
   git clone git@github.com:matsko/.dotfiles.git
+
+  echo "Add 'source .dotfiles/.zshrc' to '.zshrc'"
+  echo "Add 'source .dotfiles/.bashrc' to '.bashrc'"
 fi
 
 # Link configuration files to the home dir
 cd ~
-ln -nfs ./.dotfiles/.zshrc
 ln -nfs ./.dotfiles/.vimrc
 ln -nfs ./.dotfiles/.gitconfig
 ln -nfs ./.dotfiles/.tmux.conf
