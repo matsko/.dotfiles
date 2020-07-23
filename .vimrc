@@ -7,6 +7,7 @@ filetype off
 " make sure there is no delay with the escape key
 set timeoutlen=1000 ttimeoutlen=0
 
+" Plugins that will be loaded from github
 call plug#begin()
 Plug 'yearofmoo/Vim-Darkmate'
 call plug#end()
@@ -241,18 +242,6 @@ command GulpInstall execute "!~/.vim/scripts/gulp-install.sh"
 " Real Data Collection "
 map <Leader>dm :DataMonths<space>
 command -nargs=+ DataMonths execute "$read !~/.vim/scripts/months.js <args>"
-
-" Fake Data Collection "
-map <Leader>dfake :FakeData 10<space>
-map <Leader>dfn   :FakeData 10 name<CR>
-map <Leader>dffn  :FakeData 10 first_name<CR>
-map <Leader>dfln  :FakeData 10 last_name<CR>
-map <Leader>dfe   :FakeData 10 email<CR>
-map <Leader>dfu   :FakeData 10 url<CR>
-map <Leader>dfip  :FakeData 10 ip<CR>
-map <Leader>dfct  :FakeData 10 city<CR>
-map <Leader>dfcl  :FakeData 10 color<CR>
-command -nargs=+ FakeData execute "$read !~/.vim/scripts/fake_data.rb <args>"
 
 " Send Visually selected area to gist "
 vnoremap <leader>gist :w !gist -p -t %:e \| pbcopy<cr>
