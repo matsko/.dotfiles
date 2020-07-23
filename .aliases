@@ -1,18 +1,26 @@
-alias www='cd ~/code';
+# Command Shortcuts
 alias v='nvim .';
 alias vim='nvim';
-alias claer='clear';
-
 alias o='open';
-alias dotfiles='cd ~/.dotfiles';
+
+# Incorrectly Spelled Command Aliases
+alias claer='clear';
+alias sl=ls
+
+# Configuration Files
 alias aliases='vim ~/.aliases';
 alias aliases.local='vim ~/.dotfiles/.aliases.local';
 alias zshrc='vim ~/.zshrc';
 alias vimrc='vim ~/.vimrc';
 alias gitconfig='vim ~/.gitconfig';
-alias sl=ls
-
 alias zshconfig="vim ~/.zshrc"
 alias ohmyzsh="vim ~/.oh-my-zsh"
+alias sshconfig="vim ~/.ssh/config"
+alias tmuxconfig="vim ~/.tmux.conf"
 
+# Directories
+alias www='cd ~/code';
+alias dotfiles='cd ~/.dotfiles';
+
+# Machine-specific aliases
 source ~/.dotfiles/.aliases.local
