@@ -18,6 +18,7 @@ alias zshrc='vim ~/.zshrc';
 alias vimrc='vim ~/.dotfiles/.vimrc';
 alias sshconfig="vim ~/.ssh/config"
 alias tmuxconfig="vim ~/.tmux.conf"
+alias vscode-snippets="cd ~/.dotfiles/.vscode-snippets"
 
 # Directories
 alias www='cd ~/code';
