@@ -14,6 +14,7 @@ touch .dotfiles/.vimrc.local
 touch .dotfiles/.vars.local
 touch .dotfiles/.gitconfig.local
 touch .dotfiles/.aliases.local
+touch .dotfiles/.aliases.tmux.local
 touch .dotfiles/.paths.local
 touch .dotfiles/.tmux.conf.local
 
