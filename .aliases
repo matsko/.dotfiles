@@ -2,6 +2,7 @@
 alias v='nvim .';
 alias vim='nvim';
 alias o='open';
+alias h='open http://localhost:5123; http-server -c-1 . -p 5123';
 
 # Incorrectly Spelled Command Aliases
 alias claer='clear';
@@ -29,15 +30,17 @@ function tc {
   vim ~/code/$1/.tmux
 }
 function t {
-  TMUX_NAME=$1
-  if [ -z "$TMUX_NAME" ]; then
+  PROJECT_NAME="$1"
+  PROJECT_DIR="$HOME/code/$PROJECT_NAME"
+  if [ -z "$PROJECT_NAME" ]; then
     echo "Please provide a project name"
   else
-    tmux has-session -t $TMUX_NAME 2>/dev/null
+    tmux has-session -t $PROJECT_NAME 2>/dev/null
     if [ $? != 0 ]; then
-      tmux-boot $TMUX_NAME
+      tmux-boot $PROJECT_NAME
     fi
-    tmux attach-session -t $TMUX_NAME
+    code $PROJECT_DIR
+    tmux attach-session -t $PROJECT_NAME
   fi
 }
 
