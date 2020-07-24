@@ -10,49 +10,62 @@ alias claer='clear';
 alias sl=ls
 
 # Configuration Files
-alias aliases='vim ~/.dotfiles/.aliases';
-alias aliases.local='vim ~/.dotfiles/.aliases.local';
-alias gitconfig='vim ~/.dotfiles/.gitconfig';
-alias gitconfig.local='vim ~/.dotfiles/gitconfig.local';
+alias aliases='vim $DOTFILES_HOME/.aliases';
+alias aliases.local='vim $DOTFILES_HOME/.aliases.local';
+alias gitconfig='vim $DOTFILES_HOME/.gitconfig';
+alias gitconfig.local='vim $DOTFILES_HOME/gitconfig.local';
 alias tmuxconfig="vim ~/.tmux.conf"
 alias tmuxconfig.local="vim ~/.tmux.conf.local"
-alias paths='vim ~/.dotfiles/.paths';
-alias paths.local='vim ~/.dotfiles/.paths.local';
+alias paths='vim $DOTFILES_HOME/.paths';
+alias paths.local='vim $DOTFILES_HOME/.paths.local';
 alias zshrc='vim ~/.zshrc';
-alias zshrc.dotfiles='vim ~/.dotfiles/.zshrc';
-alias vimrc='vim ~/.dotfiles/.vimrc';
-alias vimrc.local='vim ~/.dotfiles/.vimrc.local';
-alias vars='vim ~/.dotfiles/.vars';
-alias vars.local='vim ~/.dotfiles/.vars.local';
+alias zshrc.dotfiles='vim $DOTFILES_HOME/.zshrc';
+alias vimrc='vim $DOTFILES_HOME/.vimrc';
+alias vimrc.local='vim $DOTFILES_HOME/.vimrc.local';
+alias vars='vim $DOTFILES_HOME/.vars';
+alias vars.local='vim $DOTFILES_HOME/.vars.local';
 alias sshconfig="vim ~/.ssh/config"
-alias vscode-snippets="cd ~/.dotfiles/.vscode-snippets"
-alias www='cd ~/code'
+alias vscode-snippets="cd $DOTFILES_HOME/.vscode-snippets"
 
 # Directories
 alias www='cd ~/code';
-alias dotfiles='cd ~/.dotfiles';
+alias dotfiles='cd $DOTFILES_HOME';
 
 function tc {
-  vim ~/code/$1/.tmux
+  PROJECT_NAME="$1"
+  PROJECT_DIR="$PROJECTS_HOME"
+  if [ -z "$PROJECT_NAME" ] || [ "$PROJECT_NAME" = "default" ]; then
+    PROJECT_NAME="default"
+  else
+    PROJECT_DIR="$PROJECTS_HOME/$PROJECT_NAME"
+  fi
+  vim "$PROJECT_DIR/.tmux"
 }
+
 function t {
   PROJECT_NAME="$1"
-  PROJECT_DIR="$HOME/code/$PROJECT_NAME"
-  if [ -z "$PROJECT_NAME" ]; then
-    echo "Please provide a project name"
+  PROJECT_DIR="$PROJECTS_HOME"
+  if [ -z "$PROJECT_NAME" ] || [ "$PROJECT_NAME" = "default" ]; then
+    PROJECT_NAME="default"
   else
-    tmux has-session -t $PROJECT_NAME 2>/dev/null
-    if [ $? != 0 ]; then
-      tmux-boot $PROJECT_NAME
-    fi
-    code $PROJECT_DIR
-    tmux attach-session -t $PROJECT_NAME
+    PROJECT_DIR="$PROJECTS_HOME/$PROJECT_NAME"
   fi
+
+  echo $PROJECT_DIR
+  tmux has-session -t $PROJECT_NAME 2>/dev/null
+  if [ $? != 0 ]; then
+    tmux-boot $PROJECT_NAME
+  fi
+  tmux attach-session -t $PROJECT_NAME
 }
 
 function tmux-boot {
   PROJECT_NAME="$1"
-  PROJECT_DIR="$HOME/code/$PROJECT_NAME"
+  if [[ $PROJECT_NAME = "default" ]]; then
+    PROJECT_DIR="$PROJECTS_HOME"
+  else
+    PROJECT_DIR="$PROJECTS_HOME/$PROJECT_NAME"
+  fi
   if [[ -d "$PROJECT_DIR" ]]; then
     cd $PROJECT_DIR
     TMUX_FILE="$PROJECT_DIR/.tmux"
@@ -68,3 +81,5 @@ function tmux-boot {
     echo "$PROJECT_DIR does not exist"
   fi
 }
+
+alias tmux-halt="tmux kill-session -s"
