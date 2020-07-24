@@ -1,5 +1,6 @@
 {
     "window.zoomLevel": 2,
     "editor.tabSize": 2,
-    "editor.detectIndentation": false
+    "editor.detectIndentation": false,
+    "files.autoSave": "onFocusChange"
 }
