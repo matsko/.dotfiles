@@ -10,6 +10,8 @@ cd ~
 ln -nfs ./.dotfiles/.vimrc
 ln -nfs ./.dotfiles/.gitconfig
 ln -nfs ./.dotfiles/.tmux.conf
+touch .dotfiles/.vimrc.local
+touch .dotfiles/.vars.local
 touch .dotfiles/.gitconfig.local
 touch .dotfiles/.aliases.local
 touch .dotfiles/.paths.local

@@ -3,6 +3,7 @@ alias v='nvim .';
 alias vim='nvim';
 alias o='open';
 alias h='open http://localhost:5123; http-server -c-1 . -p 5123';
+alias reload-aliases='cd ~; source .dotfiles/.zshrc; cd -';
 
 # Incorrectly Spelled Command Aliases
 alias claer='clear';
@@ -18,9 +19,14 @@ alias tmuxconfig.local="vim ~/.tmux.conf.local"
 alias paths='vim ~/.dotfiles/.paths';
 alias paths.local='vim ~/.dotfiles/.paths.local';
 alias zshrc='vim ~/.zshrc';
+alias zshrc.dotfiles='vim ~/.dotfiles/.zshrc';
 alias vimrc='vim ~/.dotfiles/.vimrc';
+alias vimrc.local='vim ~/.dotfiles/.vimrc.local';
+alias vars='vim ~/.dotfiles/.vars';
+alias vars.local='vim ~/.dotfiles/.vars.local';
 alias sshconfig="vim ~/.ssh/config"
 alias vscode-snippets="cd ~/.dotfiles/.vscode-snippets"
+alias www='cd ~/code'
 
 # Directories
 alias www='cd ~/code';

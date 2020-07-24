@@ -164,13 +164,8 @@ function! <SID>SynStack()
 endfunc 
 
 " File Type Highlighting
-au BufNewFile,BufRead *.markdown set filetype=html
+au BufNewFile,BufRead *.markdown set filetype=markdown
 au BufNewFile,BufRead *.ejs set filetype=html
-au BufNewFile,BufRead *.clj set syn=clojure
-au BufNewFile,BufRead *.dart set syn=dart
-au BufNewFile,BufRead *.lvimrc set syn=vim
-au BufNewFile,BufRead *.es6.js set syn=javascript
-au BufNewFile,BufRead *.es6 set syn=javascript
 au BufNewFile,BufRead * set nopaste
 
 set pastetoggle=<leader>p
@@ -272,3 +267,5 @@ nnoremap <Leader>c ggVG"+y
 
 " search whatever is selected
 vmap <Leader>/ "sy /<C-R>s
+
+source ~/.dotfiles/.vimrc.local
