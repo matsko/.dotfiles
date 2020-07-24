@@ -13,6 +13,7 @@ ln -nfs ./.dotfiles/.tmux.conf
 touch .dotfiles/.gitconfig.local
 touch .dotfiles/.aliases.local
 touch .dotfiles/.paths.local
+touch .dotfiles/.tmux.conf.local
 
 # Setup NeoVim 
 mkdir -p .config/nvim

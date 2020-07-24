@@ -12,14 +12,50 @@ alias aliases='vim ~/.dotfiles/.aliases';
 alias aliases.local='vim ~/.dotfiles/.aliases.local';
 alias gitconfig='vim ~/.dotfiles/.gitconfig';
 alias gitconfig.local='vim ~/.dotfiles/gitconfig.local';
+alias tmuxconfig="vim ~/.tmux.conf"
+alias tmuxconfig.local="vim ~/.tmux.conf.local"
 alias paths='vim ~/.dotfiles/.paths';
 alias paths.local='vim ~/.dotfiles/.paths.local';
 alias zshrc='vim ~/.zshrc';
 alias vimrc='vim ~/.dotfiles/.vimrc';
 alias sshconfig="vim ~/.ssh/config"
-alias tmuxconfig="vim ~/.tmux.conf"
 alias vscode-snippets="cd ~/.dotfiles/.vscode-snippets"
 
 # Directories
 alias www='cd ~/code';
 alias dotfiles='cd ~/.dotfiles';
+
+function tc {
+  vim ~/code/$1/.tmux
+}
+function t {
+  TMUX_NAME=$1
+  if [ -z "$TMUX_NAME" ]; then
+    echo "Please provide a project name"
+  else
+    tmux has-session -t $TMUX_NAME 2>/dev/null
+    if [ $? != 0 ]; then
+      tmux-boot $TMUX_NAME
+    fi
+    tmux attach-session -t $TMUX_NAME
+  fi
+}
+
+function tmux-boot {
+  PROJECT_NAME="$1"
+  PROJECT_DIR="$HOME/code/$PROJECT_NAME"
+  if [[ -d "$PROJECT_DIR" ]]; then
+    cd $PROJECT_DIR
+    TMUX_FILE="$PROJECT_DIR/.tmux"
+    if [[ -f $TMUX_FILE ]]; then
+      echo "loading $TMUX_FILE"
+      export TMUX_SESSION_NAME="$PROJECT_NAME"
+      source $TMUX_FILE
+      export TMUX_SESSION_NAME=""
+    else
+      echo ".tmux does not exist in $PROJECT_DIR"
+    fi
+  else
+    echo "$PROJECT_DIR does not exist"
+  fi
+}
