@@ -1,0 +1,58 @@
+# TMUX Configurations for this project
+function set-colors {
+  # default statusbar colors
+  tmux set-option -g status-style fg=colour136,bg=colour235 #yellow and base02
+
+  # default window title colors
+  tmux set-window-option -g window-status-style fg=colour244,bg=default #base0 and default
+  #set-window-option -g window-status-style dim
+
+  # active window title colors
+  tmux set-window-option -g window-status-current-style fg=colour166,bg=default #orange and default
+  #set-window-option -g window-status-current-style bright
+
+  # pane border
+  tmux set-option -g pane-border-style fg=colour235 #base02
+  tmux set-option -g pane-active-border-style fg=colour240 #base01
+
+  # message text
+  tmux set-option -g message-style fg=colour166,bg=colour235 #orange and base02
+
+  # pane number display
+  tmux set-option -g display-panes-active-colour colour33 #blue
+  tmux set-option -g display-panes-colour colour166 #orange
+
+  # clock
+  tmux set-window-option -g clock-mode-colour colour64 #green
+
+  # bell
+  tmux set-window-option -g window-status-bell-style fg=colour235,bg=colour160 #base02, red
+}
+
+if [[ -z "$TMUX_SESSION_NAME" ]]; then
+  echo "$TMUX_SESSION_NAME not defined"
+else
+  cd "$(dirname "$0")"
+  tmux new-session -d -s $TMUX_SESSION_NAME
+  tmux set-option -gw window-status-format '#{=10:window_name}' # limit the length of inactive window name
+  tmux set -g status-justify centre           # center window list for clarity
+
+  tmux set default-terminal "screen-256color"
+  set-colors
+
+  # Tab #1
+  tmux new-window -t $TMUX_SESSION_NAME:1 -n 'Designs HTTP'
+  tmux send-keys -t $TMUX_SESSION_NAME:1 'cd designs' C-m
+  tmux send-keys -t $TMUX_SESSION_NAME:1 './server.sh' C-m
+
+  # Tab #2
+  tmux new-window -t $TMUX_SESSION_NAME:2 -n 'Designs'
+  tmux send-keys -t $TMUX_SESSION_NAME:2 'cd designs' C-m
+
+  # Tab #2
+  tmux new-window -t $TMUX_SESSION_NAME:3 -n 'Deno'
+  tmux send-keys -t $TMUX_SESSION_NAME:3 './server/run.sh' C-m
+
+  # Close Tab #0
+  tmux send-keys -t $TMUX_SESSION_NAME:0 'exit' C-m
+fi
