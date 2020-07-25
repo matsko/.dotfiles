@@ -3,7 +3,25 @@ alias v='nvim .';
 alias vim='nvim';
 alias o='open';
 alias h='open http://localhost:5123; http-server -c-1 . -p 5123';
-alias reload-aliases='cd ~; source .dotfiles/.zshrc; cd -';
+alias reload-zshrc='cd ~; source .dotfiles/.zshrc; cd -';
+alias reload-bash='cd ~; source .dotfiles/.bashrc; cd -';
+function trail() {
+  X=`which realpath`
+  if [ $? != 0 ]; then
+    echo "install `brew install coreutils`";
+  else
+    realpath $1
+  fi
+}
+function trail-copy {
+  trail $1 | pbcopy
+  if [ $? != 0 ]; then
+    echo "error file not found"
+  else
+    echo "path copied to clipboard!"
+  fi
+}
+alias hosts="sudo vim /etc/hosts"
 
 # Incorrectly Spelled Command Aliases
 alias claer='clear';
@@ -26,12 +44,13 @@ alias sshconfig="vim ~/.ssh/config"
 alias vscode-snippets="cd $DOTFILES_HOME/.vscode-snippets"
 
 # Directories
-alias www='cd ~/code';
-alias dotfiles='cd $DOTFILES_HOME';
+alias dir.www='cd ~/code';
+alias dir.dotfiles='cd $DOTFILES_HOME';
+alias dir.tmuxthemes='cd $TMUX_THEMES_HOME';
 
 # TMUX-specific aliases
-alias tmuxconfig="vim ~/.tmux.conf"
-alias tmuxconfig.local="vim ~/.tmux.conf.local"
-alias aliases.tmux="vim ~/.aliases.tmux"
-alias aliases.tmux.local="vim ~/.aliases.tmux"
+alias tmuxconfig="vim $DOTFILES_HOME/.tmux.conf"
+alias tmuxconfig.local="vim $DOTFILES_HOME/.tmux.conf.local"
+alias aliases.tmux="vim $DOTFILES_HOME/.aliases.tmux"
+alias aliases.tmux.local="vim $DOTFILES_HOME/.aliases.tmux"
 source "$DOTFILES_HOME/.aliases.tmux"
