@@ -44,6 +44,7 @@ alias sshconfig="vim ~/.ssh/config"
 alias vscode-snippets="cd $DOTFILES_HOME/.vscode-snippets"
 
 # Directories
+alias dotfiles='cd ~/.dotfiles';
 alias dir.www='cd ~/code';
 alias dir.dotfiles='cd $DOTFILES_HOME';
 alias dir.tmuxthemes='cd $TMUX_THEMES_HOME';
