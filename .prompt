@@ -1,0 +1,2 @@
+# history -1 | grep -o -E '^\s*[0-9]+
+PROMPT="%{$fg[red]%}[%!]%{$reset_color%} %{$fg[cyan]%}%c%{$reset_color%} %{$fg[green]%}➜%{$reset_color%} $(git_prompt_info)"

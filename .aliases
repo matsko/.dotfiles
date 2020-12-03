@@ -55,3 +55,8 @@ alias tmuxconfig.local="vim $DOTFILES_HOME/.tmux.conf.local"
 alias aliases.tmux="vim $DOTFILES_HOME/.aliases.tmux"
 alias aliases.tmux.local="vim $DOTFILES_HOME/.aliases.tmux"
 source "$DOTFILES_HOME/.aliases.tmux"
+
+alias mfx='cd ~/code/mfx'
+
+alias prompt="vim ~/.dotfiles/.prompt"
+alias prompt.local="vim ~/.dotfiles/.prompt.local"

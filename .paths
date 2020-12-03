@@ -1,5 +1,6 @@
 # Rust
 export PATH="$HOME/.cargo/bin:$PATH"
+export DOTFILES="$HOME/.dotfiles"
 
 # NVM
 export NVM_DIR="$HOME/.nvm"
@@ -15,3 +16,11 @@ export PATH="$PATH:/$VSCODE_HOME/bin"
 
 # Homebrew
 export PATH=$PATH:~/homebrew/bin
+
+# Python
+export PATH="/Users/matsko/.pyenv/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+
+# RVM
+export PATH="$PATH:$HOME/.rvm/bin"
