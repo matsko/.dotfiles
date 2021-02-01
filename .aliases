@@ -2,7 +2,7 @@
 alias v='nvim .';
 alias vim='nvim';
 alias o='open';
-alias h='open http://localhost:5123; http-server -c-1 . -p 5123';
+alias h='open http://localhost:5123; http-server -c-1 . -p 5123 --cors';
 alias reload-zshrc='cd ~; source .dotfiles/.zshrc; cd -';
 alias reload-bash='cd ~; source .dotfiles/.bashrc; cd -';
 function trail() {

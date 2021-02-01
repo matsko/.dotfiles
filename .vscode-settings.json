@@ -10,5 +10,7 @@
     "typescript.updateImportsOnFileMove.enabled": "never",
     "files.exclude": {
       "**/dist/**": true
-    }
+    },
+    "workbench.editor.enablePreviewFromQuickOpen": false,
+    "workbench.editor.showTabs": true
 }
