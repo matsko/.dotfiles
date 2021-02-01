@@ -10,6 +10,7 @@ set timeoutlen=1000 ttimeoutlen=0
 " Plugins that will be loaded from github
 call plug#begin()
 Plug 'yearofmoo/Vim-Darkmate'
+Plug 'ctrlpvim/ctrlp.vim'
 call plug#end()
 
 " highlight the code

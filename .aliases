@@ -1,10 +1,12 @@
 # Command Shortcuts
 alias v='nvim .';
+alias l='ls -lah';
 alias vim='nvim';
-alias o='open';
+alias o='open .';
 alias h='open http://localhost:5123; http-server -c-1 . -p 5123 --cors';
 alias reload-zshrc='cd ~; source .dotfiles/.zshrc; cd -';
 alias reload-bash='cd ~; source .dotfiles/.bashrc; cd -';
+alias reload-aliases='cd ~; source .dotfiles/.aliases; cd -';
 function trail() {
   X=`which realpath`
   if [ $? != 0 ]; then
@@ -48,6 +50,7 @@ alias dotfiles='cd ~/.dotfiles';
 alias dir.www='cd ~/code';
 alias dir.dotfiles='cd $DOTFILES_HOME';
 alias dir.tmuxthemes='cd $TMUX_THEMES_HOME';
+alias yom='cd ~/code/www.yearofmoo.com';
 
 # TMUX-specific aliases
 alias tmuxconfig="vim $DOTFILES_HOME/.tmux.conf"
@@ -58,5 +61,12 @@ source "$DOTFILES_HOME/.aliases.tmux"
 
 alias mfx='cd ~/code/mfx'
 
-alias prompt="vim ~/.dotfiles/.prompt"
-alias prompt.local="vim ~/.dotfiles/.prompt.local"
+alias promptrc="vim ~/.dotfiles/.prompt"
+alias promptrc.local="vim ~/.dotfiles/.prompt.local"
+
+function docker-ssh {
+  docker exec -it $1 /bin/sh
+}
+
+alias designdoc='cd ~/code/designdoc/app'
+alias koti='cd ~/code/koti'
