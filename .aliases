@@ -1,4 +1,5 @@
 # Command Shortcuts
+alias c='code .';
 alias v='nvim .';
 alias l='ls -lah';
 alias vim='nvim';

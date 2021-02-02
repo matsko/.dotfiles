@@ -17,6 +17,7 @@ touch .dotfiles/.aliases.local
 touch .dotfiles/.aliases.tmux.local
 touch .dotfiles/.paths.local
 touch .dotfiles/.tmux.conf.local
+touch .dotfiles/.prompt.local
 
 # Setup NeoVim 
 mkdir -p .config/nvim
