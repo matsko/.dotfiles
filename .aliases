@@ -75,3 +75,5 @@ function docker-ssh {
 
 alias designdoc='cd ~/code/designdoc/app'
 alias koti='cd ~/code/koti'
+
+alias copy-public-key='cat ~/.ssh/id_rsa.pub | pbcopy; echo "public key copied to clipboard!"'

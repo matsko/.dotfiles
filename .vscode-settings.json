@@ -1,6 +1,5 @@
 {
-    "window.zoomLevel": 1,
-    "editor.tabSize": 2,
+  "editor.tabSize": 2,
     "editor.detectIndentation": false,
     "files.autoSave": "onFocusChange",
     "search.exclude": {
@@ -16,12 +15,25 @@
     "go.formatTool": "gofmt",
     "typescript.updateImportsOnFileMove.enabled": "never",
     "files.exclude": {
-      "**/dist/**": true
+      "**/dist/**": true,
+      "**/node_modules/**": true
     },
     "workbench.editor.enablePreviewFromQuickOpen": false,
     "workbench.editor.showTabs": true,
     "liveshare.authenticationProvider": "GitHub",
     "explorer.openEditors.visible": 0,
     "workbench.colorTheme": "Monokai Pro",
-    "workbench.iconTheme": "Monokai Pro Icons"
+    "workbench.iconTheme": "Monokai Pro Icons",
+    "html.autoClosingTags": false,
+    "editor.autoClosingBrackets": "never",
+    "editor.autoClosingOvertype": "never",
+    "javascript.autoClosingTags": false,
+    "typescript.autoClosingTags": false,
+    "workbench.editorAssociations": [
+      {
+        "viewType": "jupyter.notebook.ipynb",
+        "filenamePattern": "*.ipynb"
+      }
+    ],
+    "window.zoomLevel": 1
 }
