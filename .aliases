@@ -1,5 +1,7 @@
 # Command Shortcuts
+<<<<<<< HEAD
 alias c='code .';
+alias @='cd ~/code';
 alias v='nvim .';
 alias l='ls -lah';
 alias vim='nvim';
@@ -47,6 +49,8 @@ alias sshconfig="vim ~/.ssh/config"
 alias vscode-snippets="cd $DOTFILES_HOME/.vscode-snippets"
 
 # Directories
+alias dir.notes="cd ~/notes";
+alias notes="open /Applications/Obsidian.app";
 alias dotfiles='cd ~/.dotfiles';
 alias dir.www='cd ~/code';
 alias dir.dotfiles='cd $DOTFILES_HOME';

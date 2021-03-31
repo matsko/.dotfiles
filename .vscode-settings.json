@@ -7,10 +7,21 @@
       "**/dist": true,
       "dist/": true
     },
+    "[go]": {
+      "editor.formatOnSave": false,
+      "editor.codeActionsOnSave": {
+          "source.organizeImports": false
+      },
+    },
+    "go.formatTool": "gofmt",
     "typescript.updateImportsOnFileMove.enabled": "never",
     "files.exclude": {
       "**/dist/**": true
     },
     "workbench.editor.enablePreviewFromQuickOpen": false,
-    "workbench.editor.showTabs": true
+    "workbench.editor.showTabs": true,
+    "liveshare.authenticationProvider": "GitHub",
+    "explorer.openEditors.visible": 0,
+    "workbench.colorTheme": "Monokai Pro",
+    "workbench.iconTheme": "Monokai Pro Icons"
 }

@@ -17,3 +17,9 @@ export PATH="$HOME/homebrew/bin:$PATH"
 # Python
 PYENV_ROOT=$(pyenv root)
 export PATH="$PYENV_ROOT/shims:$PATH"
+
+# Conda
+export PATH="/usr/local/anaconda3/bin:$PATH"
+
+# Go
+export GOPATH="$HOME/go"
