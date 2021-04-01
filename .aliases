@@ -1,5 +1,4 @@
 # Command Shortcuts
-<<<<<<< HEAD
 alias c='code .';
 alias @='cd ~/code';
 alias v='nvim .';
