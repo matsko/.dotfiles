@@ -23,3 +23,5 @@ export PATH="/usr/local/anaconda3/bin:$PATH"
 
 # Go
 export GOPATH="$HOME/go"
+
+export PATH="$HOME/bin:$PATH"

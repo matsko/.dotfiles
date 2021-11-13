@@ -1,5 +1,5 @@
 {
-  "editor.tabSize": 2,
+  "editor.tabSize": 8,
     "editor.detectIndentation": false,
     "files.autoSave": "onFocusChange",
     "search.exclude": {
@@ -29,11 +29,18 @@
     "editor.autoClosingOvertype": "never",
     "javascript.autoClosingTags": false,
     "typescript.autoClosingTags": false,
-    "workbench.editorAssociations": [
-      {
-        "viewType": "jupyter.notebook.ipynb",
-        "filenamePattern": "*.ipynb"
-      }
-    ],
-    "window.zoomLevel": 1
+    "workbench.editorAssociations": {
+	"*.ipynb": "jupyter-notebook"
+},
+"editor.cursorStyle": "line",
+"editor.insertSpaces": false,
+"editor.lineNumbers": "on",
+"editor.wordSeparators": "/\\()\"':,.;<>~!@#$%^&*|+=[]{}`?-",
+"editor.wordWrap": "off",
+"notebook.cellToolbarLocation": {
+	"default": "right",
+	"jupyter-notebook": "left"
+},
+"go.toolsManagement.autoUpdate": true,
+"window.zoomLevel": 1,
 }

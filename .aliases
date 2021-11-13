@@ -72,7 +72,20 @@ function docker-ssh {
   docker exec -it $1 /bin/sh
 }
 
+function docker-run {
+  docker run -it $1 $2
+}
+
 alias designdoc='cd ~/code/designdoc/app'
 alias koti='cd ~/code/koti'
 
 alias copy-public-key='cat ~/.ssh/id_rsa.pub | pbcopy; echo "public key copied to clipboard!"'
+
+function flush-dns() {
+  sudo killall -HUP mDNSResponder
+  sudo dscacheutil -flushcache
+  sudo killall -HUP mDNSResponder
+}
+
+alias wifi="/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport"
+alias fs="du -sh ."
