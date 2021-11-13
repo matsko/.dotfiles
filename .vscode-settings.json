@@ -6,12 +6,6 @@
       "**/dist": true,
       "dist/": true
     },
-    "[go]": {
-      "editor.formatOnSave": false,
-      "editor.codeActionsOnSave": {
-          "source.organizeImports": false
-      },
-    },
     "go.formatTool": "gofmt",
     "typescript.updateImportsOnFileMove.enabled": "never",
     "files.exclude": {

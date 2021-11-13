@@ -89,3 +89,28 @@ function flush-dns() {
 
 alias wifi="/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport"
 alias fs="du -sh ."
+alias wifi="/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport /usr/local/bin/airport"
+
+function mask-mac-address {
+  echo "please enter the mac address you wish to use"
+  read addr
+
+  if [ -z "$addr" ]; then
+    echo "please enter a valid value"
+    exit 1
+  fi
+
+  sudo ifconfig en0 ether $addr
+  echo "MAC address updated to ${addr}"
+}
+
+function restore-mac-address {
+  addr="a4:83:e7:c0:17:4a"
+  sudo ifconfig en0 ether $addr
+  echo "MAC address restored to ${addr}"
+}
+
+function init-editorconfig {
+  cp ~/.dotfiles/.editorconfig .
+  echo ".editorconfig copied to this directory"
+}
