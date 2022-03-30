@@ -36,5 +36,7 @@
 	"jupyter-notebook": "left"
 },
 "go.toolsManagement.autoUpdate": true,
-"window.zoomLevel": 1,
+"emmet.triggerExpansionOnTab": false,
+"emmet.showExpandedAbbreviation": "never",
+"window.zoomLevel": 3
 }
