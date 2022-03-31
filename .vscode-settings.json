@@ -1,42 +1,42 @@
 {
   "editor.tabSize": 8,
-    "editor.detectIndentation": false,
-    "files.autoSave": "onFocusChange",
-    "search.exclude": {
-      "**/dist": true,
-      "dist/": true
-    },
-    "go.formatTool": "gofmt",
-    "typescript.updateImportsOnFileMove.enabled": "never",
-    "files.exclude": {
-      "**/dist/**": true,
-      "**/node_modules/**": true
-    },
-    "workbench.editor.enablePreviewFromQuickOpen": false,
-    "workbench.editor.showTabs": true,
-    "liveshare.authenticationProvider": "GitHub",
-    "explorer.openEditors.visible": 0,
-    "workbench.colorTheme": "Monokai Pro",
-    "workbench.iconTheme": "Monokai Pro Icons",
-    "html.autoClosingTags": false,
-    "editor.autoClosingBrackets": "never",
-    "editor.autoClosingOvertype": "never",
-    "javascript.autoClosingTags": false,
-    "typescript.autoClosingTags": false,
-    "workbench.editorAssociations": {
-	"*.ipynb": "jupyter-notebook"
-},
-"editor.cursorStyle": "line",
-"editor.insertSpaces": false,
-"editor.lineNumbers": "on",
-"editor.wordSeparators": "/\\()\"':,.;<>~!@#$%^&*|+=[]{}`?-",
-"editor.wordWrap": "off",
-"notebook.cellToolbarLocation": {
-	"default": "right",
-	"jupyter-notebook": "left"
-},
-"go.toolsManagement.autoUpdate": true,
-"emmet.triggerExpansionOnTab": false,
-"emmet.showExpandedAbbreviation": "never",
-"window.zoomLevel": 3
+  "editor.detectIndentation": false,
+  "files.autoSave": "onFocusChange",
+  "search.exclude": {
+    "**/dist": true,
+    "dist/": true
+  },
+  "go.formatTool": "gofmt",
+  "typescript.updateImportsOnFileMove.enabled": "never",
+  "files.exclude": {
+    "**/dist/**": true,
+    "**/node_modules/**": true
+  },
+  "workbench.editor.enablePreviewFromQuickOpen": false,
+  "workbench.editor.showTabs": true,
+  "liveshare.authenticationProvider": "GitHub",
+  "explorer.openEditors.visible": 0,
+  "workbench.colorTheme": "Monokai Pro",
+  "workbench.iconTheme": "Monokai Pro Icons",
+  "html.autoClosingTags": false,
+  "editor.autoClosingBrackets": "never",
+  "editor.autoClosingOvertype": "never",
+  "javascript.autoClosingTags": false,
+  "typescript.autoClosingTags": false,
+  "workbench.editorAssociations": {
+    "*.ipynb": "jupyter-notebook"
+  },
+  "editor.cursorStyle": "line",
+  "editor.insertSpaces": false,
+  "editor.lineNumbers": "on",
+  "editor.wordSeparators": "/\\()\"':,.;<>~!@#$%^&*|+=[]{}`?-",
+  "editor.wordWrap": "off",
+  "notebook.cellToolbarLocation": {
+    "default": "right",
+    "jupyter-notebook": "left"
+  },
+  "go.toolsManagement.autoUpdate": true,
+  "emmet.triggerExpansionOnTab": false,
+  "emmet.showExpandedAbbreviation": "never",
+  "window.zoomLevel": 2
 }

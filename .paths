@@ -12,11 +12,12 @@ export VSCODE_HOME="/Applications/Visual Studio Code.app/Contents/Resources/app"
 export PATH="$PATH:/$VSCODE_HOME/bin"
 
 # Homebrew
-export PATH="$HOME/homebrew/bin:$PATH"
+export PATH="/opt/homebrew/bin:$PATH"
 
 # Python
-PYENV_ROOT=$(pyenv root)
-export PATH="$PYENV_ROOT/shims:$PATH"
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+
 
 # Conda
 export PATH="/usr/local/anaconda3/bin:$PATH"

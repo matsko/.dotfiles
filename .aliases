@@ -5,10 +5,22 @@ alias v='nvim .';
 alias l='ls -lah';
 alias vim='nvim';
 alias o='open .';
-alias h='open http://localhost:5123; http-server -c-1 . -p 5123 --cors';
+alias downloads='cd ~/Downloads';
+alias desktop='cd ~/Downloads';
+# alias h='open http://localhost:5123; http-server -c-1 . -p 5123 --cors';
 alias reload-zshrc='cd ~; source .dotfiles/.zshrc; cd -';
 alias reload-bash='cd ~; source .dotfiles/.bashrc; cd -';
 alias reload-aliases='cd ~; source .dotfiles/.aliases; cd -';
+function h() {
+  P="${1}"
+  if [ -z "$1" ]; then
+    P="5123"
+  fi
+
+  open "https://localhost:${P}";
+  http-server -c-1 . -p "${P}" --cors
+}
+
 function trail() {
   X=`which realpath`
   if [ $? != 0 ]; then
