@@ -8,6 +8,15 @@
     "description": "Insert the CD command so that the shell script can be cd'd into the file's dir"
   },
 
+  "fail on errors": {
+    "prefix": "set -e",
+    "body": [
+			"# exit when any command fails",
+      "set -e"
+    ],
+    "description": "Ensure the shell script fails on any errors as soon as they happen"
+  },
+
   "require env variable": {
     "prefix": "require-env",
     "body": "\\${VAR?\"Need to set \\$VAR\"}"

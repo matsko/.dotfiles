@@ -1,20 +1,21 @@
 {
-  "editor.tabSize": 8,
+  "editor.tabSize": 2,
   "editor.detectIndentation": false,
   "files.autoSave": "onFocusChange",
   "search.exclude": {
     "**/dist": true,
-    "dist/": true
+    "dist/": true,
+    ".turbo/": true,
+    ".terraform": true
   },
-  "go.formatTool": "gofmt",
   "typescript.updateImportsOnFileMove.enabled": "never",
   "files.exclude": {
     "**/dist/**": true,
+    "**/.turbo/**": true,
     "**/node_modules/**": true
   },
   "workbench.editor.enablePreviewFromQuickOpen": false,
-  "workbench.editor.showTabs": true,
-  "liveshare.authenticationProvider": "GitHub",
+  "workbench.editor.showTabs": "multiple",
   "explorer.openEditors.visible": 0,
   "workbench.colorTheme": "Monokai Pro",
   "workbench.iconTheme": "Monokai Pro Icons",
@@ -35,8 +36,22 @@
     "default": "right",
     "jupyter-notebook": "left"
   },
-  "go.toolsManagement.autoUpdate": true,
   "emmet.triggerExpansionOnTab": false,
   "emmet.showExpandedAbbreviation": "never",
-  "window.zoomLevel": 2
+  "editor.inlineSuggest.enabled": true,
+  "github.copilot.enable": {
+		"*": true,
+		"plaintext": true,
+		"markdown": false,
+		"scminput": false,
+		"yaml": false,
+		"vue": true
+	},
+  "security.workspace.trust.untrustedFiles": "open",
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "[python]": {
+    "editor.formatOnType": true
+	},
+	"svelte.enable-ts-plugin": true,
+	"window.zoomLevel": 1
 }

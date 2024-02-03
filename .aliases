@@ -1,25 +1,17 @@
-# Command Shortcuts
-alias c='code .';
+alias c='clear';
+alias x='exit'
 alias @='cd ~/code';
 alias v='nvim .';
 alias l='ls -lah';
 alias vim='nvim';
 alias o='open .';
+alias documents='cd ~/Documents';
 alias downloads='cd ~/Downloads';
 alias desktop='cd ~/Downloads';
-# alias h='open http://localhost:5123; http-server -c-1 . -p 5123 --cors';
+alias h='open http://localhost:5123; http-server -c-1 . -p 5123 --cors';
 alias reload-zshrc='cd ~; source .dotfiles/.zshrc; cd -';
 alias reload-bash='cd ~; source .dotfiles/.bashrc; cd -';
 alias reload-aliases='cd ~; source .dotfiles/.aliases; cd -';
-function h() {
-  P="${1}"
-  if [ -z "$1" ]; then
-    P="5123"
-  fi
-
-  open "https://localhost:${P}";
-  http-server -c-1 . -p "${P}" --cors
-}
 
 function trail() {
   X=`which realpath`
@@ -85,7 +77,11 @@ function docker-ssh {
 }
 
 function docker-run {
-  docker run -it $1 $2
+  COMMAND=$2
+  if [ -z $COMMAND ]; then
+    COMMAND="bash"
+  fi
+  docker run -it $1 $COMMAND
 }
 
 alias designdoc='cd ~/code/designdoc/app'
@@ -126,3 +122,149 @@ function init-editorconfig {
   cp ~/.dotfiles/.editorconfig .
   echo ".editorconfig copied to this directory"
 }
+
+alias focal='cd ~/code/focal/main'
+capture() {
+    sudo dtrace -p "$1" -qn '
+        syscall::write*:entry
+        /pid == $target && arg0 == 1/ {
+            printf("%s", copyinstr(arg1, arg2));
+        }
+    '
+}
+
+alias p="pnpm"
+alias b="bun"
+alias mfx="cd ~/code/mfx"
+
+alias gf='git fetch --all'
+alias gc='git commit'
+alias t='cd ~/code/t'
+
+function map-subdomains {
+  TARGET=$1
+  curl -s "https://crt.sh/?q=${TARGET}&output=json" | jq -r '.[] | "\(.name_value)\n\(.common_name)"' | sort -u > "${TARGET}_crt.sh.txt"
+}
+alias htb="cd ~/code/htb"
+
+alias encrypt="gpg --encrypt --recipient \"Matias Niemela\""
+alias decrypt="gpg --decrypt"
+alias keys="cd ~/keys"
+
+alias sha-file-256="shasum -a 256"
+alias sha-file-512="shasum -a 512"
+function git-stash-file() {
+  F=$1
+  if [ -z $F ]; then
+    echo "Please provide a file"
+    exit 1
+  elif [ ! -e $F ]; then
+    echo "File $F does not exist"
+    exit 1
+  fi
+  
+  git stash push -m "stash single file $F" $F
+}
+
+alias knode="killall -9 node"
+alias gdf='git diff HEAD{'^',}' # diff between your recent tow commits
+
+alias subs="cd ~/code/subscriptionpay"
+alias py="cd ~/code/python"
+alias resume="cd ~/code/resume"
+alias tri="cd ~/code/triniti-quantum"
+alias notebooks="cd ~/code/notebooks"
+alias bri="cd ~/code/rvc-voice-transfer"
+function mv-dir-back() {
+  D=$1
+  mv $D ../$D_back
+  cd ..
+  rmdir $D
+  mv $D_back $D
+}
+alias st="cd ~/code/create-safe/style-transfer"
+alias okej="cd ~/code/okej"
+
+alias focal-tunnel-staging='ssh focal-bastion-staging'
+alias focal-tunnel-production='ssh focal-bastion-production'
+
+function git-chrome() {
+  open -a "Google Chrome" "$@" 
+}
+
+alias ts="cd ~/code/triniti-studio"
+alias dis="cd ~/code/create-safe/nextjs-discord-bot"
+
+alias o="ollama"
+alias o-models="cd ~/ollama"
+alias o-downloads="cd ~/.ollama/models"
+
+alias gpt-reset-history="echo '' > ~/.ollama/history"
+alias gpt="gpt-reset-history && ollama run llama2-uncensored"
+alias gpt-med="gpt-reset-history && ollama run medllama2"
+alias gpt-chaos="gpt-reset-history && ollama run chaos:latest"
+alias gpt-code="gpt-reset-history && ollama run codellama"
+alias gpt-ts="gpt-reset-history && ollama run code-typescript"
+alias gpt-therapist="gpt-reset-history && ollama run samantha-mistral:latest"
+alias therapy="gpt-therapist"
+function gpt-summarize-website {
+  gpt-reset-history
+
+  if [ "$#" -ne 1 ]; then
+      echo "Usage: $0 <URL>"
+      exit 1
+  fi
+
+  URL=$1
+  CONTENT=$(curl -s "$URL" | lynx -stdin -dump)
+
+  ollama run potato "Summarize the following text/article into 7 easy to read bullet points: " "$CONTENT"
+}
+alias s='gpt-summarize-website'
+
+function load-conda() {
+  __conda_setup="$('/opt/homebrew/Caskroom/miniconda/base/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+  if [ $? -eq 0 ]; then
+      eval "$__conda_setup"
+  else
+      if [ -f "/opt/homebrew/Caskroom/miniconda/base/etc/profile.d/conda.sh" ]; then
+          . "/opt/homebrew/Caskroom/miniconda/base/etc/profile.d/conda.sh"
+      else
+          export PATH="/opt/homebrew/Caskroom/miniconda/base/bin:$PATH"
+      fi
+  fi
+  unset __conda_setup
+}
+
+function wip {
+  MESSAGE=$1
+
+  if [ -z $MESSAGE ]; then
+    MESSAGE=$(date)
+  fi
+
+  git commit -m 'wip: $1' --no-verify
+}
+
+alias amend='git commit --amend --no-verify'
+function rebase {
+  git rebase --interactive HEAD~20
+}
+
+function rebase-main {
+  git rebase origin main
+}
+
+alias gdc="git diff --cached"
+alias gd="git diff"
+
+alias pnpm-update="pnpm update --interactive --recursive"
+alias pnpm-update-latest="pnpm update --interactive --recursive --latest"
+alias eg="cd ~/code/empathygpt"
+alias reset-main="git fetch --all; git reset --hard origin/main"
+alias sdxl='cd ~/code/sdxl/stable-diffusion-webui'
+alias hollywood='docker run --rm -it bcbcarl/hollywood'
+alias matrix='cmatrix'
+alias dev='pnpm dev'
+alias pi='ssh pi'
+alias arts="cd ~/code/arts"

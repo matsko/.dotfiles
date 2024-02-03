@@ -253,7 +253,7 @@ imap <C-c> <Esc><Leader>p<Esc>"+y
 let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
 let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
 
-nmap <Leader>iit ^j?iit(<CR>xw/it(<CR>ii<ESC>:w<CR>
+nmap <Leader>iit ^j?it(<CR>xw/iit(<CR>ii<ESC>:w<CR>
 nmap <Leader>reg :registers abcdefghi<CR>
 vmap <Leader>reg <Esc>:registers abcdefghi<CR>
 

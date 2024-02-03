@@ -6,3 +6,5 @@ source ~/.dotfiles/.vars
 source ~/.dotfiles/.vars.local
 source ~/.dotfiles/.aliases
 source ~/.dotfiles/.aliases.local
+source ~/.dotfiles/.init
+source ~/.dotfiles/.init.local

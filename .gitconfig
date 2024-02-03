@@ -7,8 +7,6 @@
 	editor = nvim
 	whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
 	excludesfile = ~/.gitignore
-[web]
-	browser = google-chrome
 [color]
 	ui = auto
 [color "branch"]
@@ -35,11 +33,32 @@
 [gitflow "prefix"]
 	versiontag = v
 [alias]
+  l = log
+  p = cherry-pick
+  b = branch
+  bb = checkout -b
+  c = commit
+  cv = commit
+  s = status
+  bd = branch -D
   co = checkout
+  wip = commit -m "wip" --no-verify
   amend = commit --amend
   confs = config -l
-  squash = rebase -i HEAD~20
+  r = rebase
+  rum = rebase upstream/main
+  rom = rebase origin/main
+  h = rebase -i HEAD~20
+  f = fetch --all
+  st = stash
+  stf = stash push -m "stashing single file" 
+  w = instaweb
+  compare = cherry -v
+  cc = clean -f -x --exclude="!.env"
 
 # machine-specific
 [include]
   path = ~/.dotfiles/.gitconfig.local
+
+[web]
+	browser = git-chrome
